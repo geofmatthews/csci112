@@ -1,0 +1,185 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    escapechar=|,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\showfig}[2]{
+\noindent\includegraphics[width=\textwidth]{#1}
+\centerline{#1}
+}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
+
+\title{FibLog}
+\author{CSCI 112, Lab 1}
+\date{}
+
+\begin{document}
+\sloppy
+
+\maketitle
+
+\begin{description} 
+\item[File names:]  Names of files, functions, and variables, 
+when specified,
+must be EXACTLY as specified.  This includes simple mistakes such
+as capitalization.
+
+\item[Individual work:]  All work must be your own.  Do not share
+code with anyone other than the instructor and teaching assistants.
+This includes looking over shoulders at screens with the code open.
+You may discuss ideas, algorithms, approaches, {\em etc.} with
+other students but NEVER actual code.  Do not use code
+written by anyone else, in the class or from the internet.
+
+\item[Documentation:] Each file should begin with a docstring
+that includes your name, the class number and name, the lab
+number, and  
+a short description of the lab, as well as documentation pertinent
+to that particular file.
+
+\item[Matrix:]  Write a \lstinline{Matrix} class, in a module \lstinline{matrix.py}.
+The initialization should take the number of rows and columns,
+and then an iterable of length \lstinline{rows * cols}.
+  It should 
+implement at least the following methods:
+\bi
+\li \lstinline{__init__}
+\li \lstinline{__str__}
+\li \lstinline{__mul__}
+\li \lstinline{__pow__}
+\ei
+Which should enable the following interactions:
+\begin{lstlisting}
+>>> from matrix import Matrix
+>>> m1 = Matrix(3, 4, range(3*4))
+>>> print(m1)
+|    0    1    2    3|
+|    4    5    6    7|
+|    8    9   10   11|
+>>> print(m1 * Matrix(4,3,range(4*3)))
+|   42   48   54|
+|  114  136  158|
+|  186  224  262|
+>>> m2 = Matrix(2, 2, [0,1,1,1])
+>>> print(m2)
+|    0    1|
+|    1    1|
+>>> print(m2 * m2)
+|    1    1|
+|    1    2|
+>>> print(m2 ** 2)
+|    1    1|
+|    1    2|
+>>> m3 = Matrix(2, 2, 'abcd')
+>>> print(m3)
+|    a    b|
+|    c    d|
+\end{lstlisting}
+
+\item[Unit test:]  Implement a unit test module for your matrix class. Call
+the unit test module \lstinline{matrix_test.py}.
+
+\item[Fibonacci:]  In a module named \lstinline{fibonacci.py},
+implement the Fibonacci function three different ways.  One will
+execute in exponential time, $O(2^n)$, one in linear time, $O(n)$, and one in log time
+$O(\log n)$.
+Mathematically, the fibonacci function is defined as follows.
+defined as 
+\[
+f(n) = \left\{\begin{array}{ll}
+     0 & \mbox{if } n = 0\\
+       1 & \mbox{if } n = 1\\
+       f(n-1) + f(n-2) & \mbox{otherwise}\end{array}\right.
+ \]
+ The log time algorithm should be based on calculating
+ the powers of the matrix
+ \[
+ \left[\begin{array}{cc}0 & 1 \\ 1 & 1 \end{array}\right]
+ \]
+ 
+ \item[Unit test:] Implement a unit test module for your
+ Fibonacci functions.  Call the unit test module \lstinline{fibonacci_test.py}.
+ 
+ \item[Timing:] Finally, implement a module called \lstinline{fibonacci_timing.py}
+ to test the runtime
+ of your three fibonacci functions.  Use the \lstinline{time.process_time_ns}
+ function to get more accurate timings, in nanoseconds.  Design
+ tests to show the different times of the different functions and illustrate
+ the differences between $O(2^n)$, $O(n)$, and $O(\log n)$.
+ 
+ \item[Writeup:]  Write a short paper discussing your findings from the
+ timing experiments, and why they support (or don't!) our order of
+ magnitude estimates of their runtimes. 
+ 
+ This writeup must be in either a plain text or a \LaTeX\ document.
+ \LaTeX is optional, but I highly recommend that you learn to use
+ it as soon as possible.  There are many online tutorials, and {\em all}
+ of my lab notes and lectures are written in \LaTeX!  A good place to
+ get started in \LaTeX\ is \url{https://www.overleaf.com/}.
+ 
+ Put this writeup in a file
+ called either {\tt lab01writeup.txt}
+ or  {\tt lab01writeup.tex}
+ 
+ If you use \LaTeX\ you may leave in place the miscellaneous
+ files produced on compilation to pdf format. 
+ 
+ \item[Turn in:] Put the following files into a folder called {\tt lab01csci112},
+ zip it into a single compressed file and submit to canvas:
+
+\bi
+\li \lstinline{matrix.py}
+\li \lstinline{matrix_test.py}
+\li \lstinline{fibonacci.py}
+\li \lstinline{fibonacci_test.py}
+\li \lstinline{fibonacci_timing.py}
+\li Either:
+\bi
+\li \lstinline{lab01writeup.txt}
+\li \lstinline{lab01writeup.tex}
+\ei
+\ei
+ 
+
+
+\end{description}
+
+
+
+\end{document}
