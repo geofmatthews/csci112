@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    escapechar=|,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\showfig}[2]{
+\noindent\includegraphics[width=\textwidth]{#1}
+\centerline{#1}
+}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
+
+\title{Infix Calculator}
+\author{CSCI 112, Lab 3}
+\date{}
+
+\begin{document}
+\sloppy
+
+\maketitle
+
+\begin{description} 
+\item[File names:]  Names of files, functions, and variables, 
+when specified,
+must be EXACTLY as specified.  This includes simple mistakes such
+as capitalization.
+
+\item[Individual work:]  All work must be your own.  Do not share
+code with anyone other than the instructor and teaching assistants.
+This includes looking over shoulders at screens with the code open.
+You may discuss ideas, algorithms, approaches, {\em etc.} with
+other students but NEVER actual code.  Do not use code
+written by anyone else, in the class or from the internet.
+
+\item[Documentation:] Each file should begin with a docstring
+that includes your name, the class number and name, the lab
+number, and  
+a short description of the lab, as well as documentation pertinent
+to that particular file.
+
+\item[Calculator:] Finish the following two problems from the text:
+\begin{enumerate}
+\item
+Implement a direct infix evaluator that combines the functionality of infix-to-postfix conversion and the postfix evaluation algorithm. Your evaluator should process infix tokens from left to right and use two stacks, one for operators and one for operands, to perform the evaluation.
+\item
+Turn your direct infix evaluator from the previous problem into a calculator.
+\end{enumerate}
+
+\item[Tokenizing:]  Instead of using single-character numbers, as in the text,
+use my tokenizing function found in \lstinline{tokens.py}.  This allows the use
+of floats, too.  Note that the tokenizer uses \lstinline{split}, so all tokens will need
+whitespace around them, e.g.
+\begin{lstlisting}
+( 3 + 1.4e5 ) * ( 4 - 22 )
+\end{lstlisting}
+
+\item[Turn in:]  A file named \lstinline{calculator.py}, with a function
+called \lstinline{calc} with the following behavior:
+\begin{lstlisting}
+>>> from calculator import calc
+>>> calc()
+calc> 2 + 2
+4
+calc> ( 3 * ( 2 + 2 ) )
+12
+\end{lstlisting}
+
+A unit test module called \lstinline{calc_test.py}, that tests the major
+functionality of your calculator functions.
+
+Zip these functions, together with \lstinline{tokens.py} and any other
+modules you built, in a folder called \lstinline{lab02} and submit to canvas.
+
+\item[Optional additions:]~ 
+
+\bi
+\li Add the \lstinline{**} operator.  Note that this has higher precedence
+than all the others, and is also right associative.  You will need to think through
+how to handle the operator stack for this one, and make the necessary
+additions to the algorithm outlined in \S 4.9.2.
+
+\li Fix the tokenizer so we don't have
+to put spaces around things:
+\begin{lstlisting}
+( 3+1.4e5)*(4-22)
+\end{lstlisting}
+
+\li Add error checking to the tokenizer, so that the user gets meaningful
+feedback from expressions like these:
+\fbox{\lstinline{3 + )}}, 
+\fbox{\lstinline{4 + * 5}}, and
+\fbox{\lstinline{( 3 ( 4 + 5))}}.
+
+
+\ei
+
+
+\end{description}
+
+
+
+\end{document}
