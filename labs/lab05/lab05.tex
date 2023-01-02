@@ -1,0 +1,147 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    escapechar=|,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\showfig}[2]{
+\noindent\includegraphics[width=\textwidth]{#1}
+\centerline{#1}
+}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
+
+\title{Eliminating Recursion with Stacks}
+\author{CSCI 112, Lab 5}
+\date{}
+
+\begin{document}
+\sloppy
+
+\maketitle
+
+\begin{description} 
+\item[File names:]  Names of files, functions, and variables, 
+when specified,
+must be EXACTLY as specified.  This includes simple mistakes such
+as capitalization.
+
+\item[Individual work:]  All work must be your own.  Do not share
+code with anyone other than the instructor and teaching assistants.
+This includes looking over shoulders at screens with the code open.
+You may discuss ideas, algorithms, approaches, {\em etc.} with
+other students but NEVER actual code.  Do not use code
+written by anyone else, in the class or from the internet.
+
+\item[Documentation:] Each file should begin with a docstring
+that includes your name, the class number and name, the lab
+number, and  
+a short description of the lab, as well as documentation pertinent
+to that particular file.
+
+\item[Translations:]  Translate each of the following
+recursive functions into ``unnested'' versions and into
+non-recursive functions following
+the style of the functions discussed in class and available in the
+file \lstinline{stackrecursion.py}.  Put all the functions into
+a file called \lstinline{uncursion.py} and unit tests
+for all of them into a file called \lstinline{uncursion_test.py}.
+
+\end{description}
+
+\begin{enumerate}
+
+\li
+\begin{lstlisting}
+def func01(n):
+    if n < 2:
+        return 3*n
+    else:
+        return 2*func01(n-1)
+\end{lstlisting}
+
+
+\li
+\begin{lstlisting}
+def func02(n):
+    if n < 2:
+        return 3*n
+    elif n < 6:
+        return n*n
+    else:
+        return 3 + 2*func02(n-2)
+\end{lstlisting}
+
+
+\li
+\begin{lstlisting}
+def func03(n):
+    if n < 2:
+        return 3*n
+    else:
+        return 3*func03(n-1) + 2*func03(n-2)
+\end{lstlisting}
+
+
+\li
+\begin{lstlisting}
+def func04(n):
+    if n < 2:
+        return 3*n
+    elif n%2 == 1:
+        return 7 + func04(n - 3)
+    else:
+        return func04(n-1) * 2*func04(n//2)
+\end{lstlisting}
+
+
+\li
+\begin{lstlisting}
+def func05(a, b):
+    if a == 0:
+        return b+3
+    elif b == 0:
+        return a*2
+    else:
+        return 2*a + 3*b + 4*func05(a-1,b) + 5*func05(a, b-1)
+\end{lstlisting}
+
+
+\end{enumerate}
+
+
+\end{document}
