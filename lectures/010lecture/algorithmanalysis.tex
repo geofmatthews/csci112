@@ -74,6 +74,7 @@
 \begin{frame}
 \maketitle
 \end{frame}
+
 \bfr{Review Python}
 \cola
 \bi
@@ -128,6 +129,7 @@ There are also many online Python tutorials.
 \colc
 
 \end{frame}
+
 \bfr{Programs}
 \begin{lstlisting}
 def classic_multiply(a, b):
@@ -958,6 +960,33 @@ def snarfle(n):
       }
     };
 \end{tikzpicture}
+\end{frame}
+
+\bfr{What is the runtime of our multiplication algorithms?}
+\cola
+\bi\li Classic multiply\ei
+\begin{Verbatim}[frame=single]
+        238
+      x  13
+     ------
+        714      
+       238 
+     ------
+       3094
+\end{Verbatim}
+
+\colb
+\bi \li Peasant multiply \ei
+\begin{Verbatim}[frame=single]
+    238   13   -->   238
+    476    6
+    952    3   -->   952
+   1904    1   -->  1904
+                    ----
+                    3094
+\end{Verbatim}                   
+\colc
+
 \end{frame}
 
 \bfr{Two algorithms for {\tt power}}
