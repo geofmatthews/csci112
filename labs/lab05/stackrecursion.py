@@ -9,13 +9,11 @@ def factorial(n):
 def fact_unnest(n):
     # call
     if n == 0:
-        return_value = 1
-        return return_value
+        return 1
     else:
         return_value = fact_unnest(n-1)
         # return
-        return_value = n * return_value
-        return return_value
+        return n * return_value
 
 def factstack(n):
     stack = [('call', n)]
@@ -43,13 +41,11 @@ def pow(a, b):
 def pow_unnest(a, b):
     #call
     if b == 0:
-        return_value = 1
-        return return_value
+        return 1
     else:
         return_value = pow_unnest(a, b-1)
         # return
-        return_value = a * return_value
-        return return_value
+        return a * return_value
 
 def powstack(a, b):
     stack = [('call', a, b)]
@@ -80,18 +76,15 @@ def powlog(a, b):
 def powlog_unnest(a, b):
     #call
     if b == 0:
-        return_value = 1
-        return return_value
+        return 1
     elif b%2 == 1:
         return_value = powlog_unnest(a, b-1)
         #return1
-        return_value = a * return_value
-        return return_value
+        return a * return_value
     else:
         return_value = powlog_unnest(a, b//2)
         # return2
-        return_value = return_value ** 2
-        return return_value
+        return return_value ** 2
 
 def powlogstack(a, b):
     stack = [('call', a, b)]
@@ -124,16 +117,14 @@ def fibonacci(n):
 def fibo_unnest(n):
     # call
     if n < 2:
-        return_value = n
-        return return_value
+        return n
     else:
         return_value = fibo_unnest(n-1)
         # return1
         saved_value = return_value
         return_value = fibo_unnest(n-2)
         # return2
-        return_value = saved_value + return_value
-        return return_value
+        return saved_value + return_value
 
 def fibonaccistack(n):
     stack = [('call', n, 0)]
@@ -161,6 +152,17 @@ def foo(n):
         return n
     else:
         return n + foo(n-1) + foo(n-2)
+
+def foo_unnest(n):
+    # call
+    if n < 2:
+        return n
+    else:
+        return_value = foo(n-1)
+        # return1
+        saved_value = return_value
+        return_value = foo(n-2)
+        return n + saved_value + return_value
     
 def foostack(n):
     stack = [('call', n, 0)]

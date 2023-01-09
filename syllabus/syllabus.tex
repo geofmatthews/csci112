@@ -3,20 +3,23 @@
 \usepackage{hyperref}
 \usepackage{alltt}
 \usepackage{color}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
 \begin{document}
 \centerline{\Large Computer Science 112}
 \centerline{\large Fundamentals of Programming 2}
 
 \begin{description}
 \item[Instructor:]
-~\\ Geoffrey Matthews
-\\ Parmly 407A
-\\ 540-458-8809
+~\\ Geoffrey Matthews, Parmly 407A, 540-458-8809
 \\ gmatthews@wlu.edu
+
+
 \item[Webpages:]~
 \begin{itemize}
-\item For homework and grades: \url{canvas.wlu.edu}
-\item For lecture notes and materials: 
+\item For submitting labs, exams, and grades: \url{canvas.wlu.edu}
+\item For lecture notes and lab descriptions: \\
 \url{https://github.com/geofmatthews/csci112}
 
 If you don't know how to use git, just go to that website,
@@ -52,15 +55,23 @@ cannot make these hours, please  make an appointment.
 \item[Overview:]
 This is the second introductory course in programming and problem
 solving.  Topics include:
-\begin{itemize}
-\item
-\end{itemize}
- 
-\item[Objectives:] After taking this course, you should be 
-able to
-\begin{itemize}
-\item
-\end{itemize}
+\bi
+\li An introduction to {\bf algorithm analysis}, the mathematical study
+of fundamental properties of computer programs.
+\li {\bf Linear data structures}, including lists, stacks, queues and deques
+and their applications.
+\li {\bf Sorting algorithms}, including $O(n^2)$ sorts such as bubble sort,
+selection sort, and insertion sort, $O(n\log n)$ sorts such as merge sort
+and quick sort, and possibly some in between, such as shell sort.
+\li {\bf Hashing} including both open and closed implementations
+of collision resolution. 
+\li {\bf Tree data structures}, basic algorithms and a sampling of their applications. 
+Topics may include: parse trees, priority queues, heaps, binary search trees,
+and balanced binary search trees.
+\li {\bf Graph data structures} basic algorithms such as topological sorting,
+strongly connected components, search algorithms such as Dijkstra's and $A^*$,
+and spanning tree algorithms.
+\ei
 
 \item[Textbook:]
 \href{https://runestone.academy/ns/books/published/pythonds/index.html}
@@ -83,10 +94,11 @@ late work accepted.
 There will be 11 labs, each worth a maximum of 5 points.  Your worst lab score will be 
 thrown out.
 Points will be awarded according to the
-following rubric.
+following.
+
 
 \begin{tabular}{p{0.75\textwidth}|c}
-\bf Factors I consider: & \bf Points \\\hline
+\bf Factors to consider: & \bf Points \\\hline
 {\bf Outstanding work.}    Well formatted, modular,
 well commented, well designed.  
 Clear, self-documenting identifiers: variables, functions, class names.
@@ -111,6 +123,20 @@ or understanding of an approach to the problem.
  Syntax errors.  Not turned in on time.  Did not follow instructions. & 0 \\
 \end{tabular}
 
+\item[Assessment survey:]
+The first lab also includes filling out the Assurance of Learning Survey for CSCI Majors.
+Completing this survey is {\bf required} to pass this course.
+
+Your answers on this survey will not affect your grade in any of your courses.
+By filling out this survey now and after you complete the requirements for the CSCI
+major or minor, you will help us assess how well we are reaching our departmental
+learning goals.
+
+At this point we do not expect you to know the answers to most of these questions;
+we, therefore, encourage you to skip questions about material that you haven’t yet
+studied.
+
+The survey can be found on canvas under assignments.
 
 \item[Midterms:]  There will be two midterms, each worth 10\%, as
 in the class schedule below.   It is open
@@ -126,7 +152,8 @@ or the internet or other resources.
 \item[Grades:]  Possible points:
 
 \begin{center}
-\begin{tabular}{cccc}
+\begin{tabular}{c|ccc}
+ & \multicolumn{3}{c}{Exams}\\
 Labs & Midterm 1 & Midterm 2 & Final \\
 50 & 10 & 10 & 30 \\
 \end{tabular}
@@ -134,11 +161,9 @@ Labs & Midterm 1 & Midterm 2 & Final \\
 
 Grades will be based on the following percentages
 out of all possible points:
-
 \[
 A \geq 90\% > B \geq 80\% > C \geq 70\% > D \geq 60\% > F
 \]
-
 The instructor reserves the right to adjust the scale,
 but only in a manner that would reward higher grades than
 those predicted from the table. Awarding $\pm$ is also at
