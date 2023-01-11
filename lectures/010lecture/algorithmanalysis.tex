@@ -233,7 +233,7 @@ We say that this program is {\bf order} $n^2$, or
 
 \bfr{Logarithms}
 
-\Show{ Logarithms, by shortening the labors, doubled the life of an astronomer.}
+\centerline{\shadowbox{\small Logarithms, by shortening the labors, doubled the life of an astronomer.}}
 
 \hfill  \sl-- Pierre-Simon, marquis de Laplace
 
@@ -243,9 +243,11 @@ We say that this program is {\bf order} $n^2$, or
 \log_b(ac) &= \log_b(a) + \log_b(c)\\
 \end{align*}
 \colb
-\hfill \includegraphics[width=0.6\textwidth]{laplace}
+\hfill \includegraphics[width=0.5\textwidth]{laplace}
 \colc
+\includegraphics[width=\textwidth]{sliderule}
 
+\centerline{\url{https://www.sliderules.org/}}
 \end{frame}
 
 
@@ -286,7 +288,17 @@ b^{\log_b(a)} &= a\\
 \\\\
 \sum_{i=m}^n (a_i - a_{i-1}) &= a_n - a_{m-1}
 \end{align*}
+
+\centerline{\scriptsize
+\url{https://tutorial.math.lamar.edu/classes/calci/summationnotation.aspx}
+}
+
+\centerline{\scriptsize
+\url{https://www.math.brown.edu/johsilve/MA0075/SummationTutorial.html}
+}
+
 \end{frame}
+
 \bfr{Sum of constant}
 
 \begin{align*}
@@ -446,9 +458,13 @@ Two minutes or 120 seconds?  Units are arbitrary.
 \li We also don't care about machine speed, programming language, etc.
 A computer that is twice as fast will just add a constant
 factor of $1/2$, anyway.
+\ei
+\end{frame}
+
+\bfr{Algorithm analysis}
+\bi
 \li We are also especially interested in how well
 programs scale to larger and larger problems.
-\li
 If the problem is ten times bigger, will it take
 ten times as long to solve?  More?  Less?
 \li
@@ -456,7 +472,8 @@ This is the essence of what we want to measure.
 The {\bf growth rate} of a program's execution time as the
 problem gets larger.
 \li
-This will be independent of units.
+We generally measure {\bf the number of times something is done.}
+This will be a positive integer independent of units.
 \ei
 
 \end{frame}
