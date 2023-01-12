@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  11 JAN 2023 14:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  12 JAN 2023 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1265,7 +1265,7 @@ Overfull \hbox (13.33241pt too wide) detected at line 27
 \openout4 = `algorithmanalysis.vrb'.
 
  (./algorithmanalysis.vrb)
-Overfull \vbox (1.81978pt too high) detected at line 665
+Overfull \vbox (1.81978pt too high) detected at line 674
  []
 
 [36
@@ -1291,7 +1291,7 @@ Overfull \hbox (13.33241pt too wide) detected at line 21
 \openout4 = `algorithmanalysis.vrb'.
 
  (./algorithmanalysis.vrb)
-Overfull \vbox (1.81978pt too high) detected at line 722
+Overfull \vbox (1.81978pt too high) detected at line 731
  []
 
 [39
@@ -1300,13 +1300,13 @@ Overfull \vbox (1.81978pt too high) detected at line 722
 \openout4 = `algorithmanalysis.vrb'.
 
  (./algorithmanalysis.vrb)
-Overfull \vbox (3.13611pt too high) detected at line 747
+Overfull \vbox (3.13611pt too high) detected at line 756
  []
 
 [40
 
 ] (./algorithmanalysis.vrb)
-Overfull \vbox (3.13611pt too high) detected at line 747
+Overfull \vbox (3.13611pt too high) detected at line 756
  []
 
 [41
@@ -1438,7 +1438,7 @@ Overfull \hbox (9.73495pt too wide) detected at line 26
 
 
 (./algorithmanalysis.vrb)
-Overfull \vbox (2.52686pt too high) detected at line 1181
+Overfull \vbox (2.52686pt too high) detected at line 1190
  []
 
 [66
@@ -1462,7 +1462,7 @@ Overfull \vbox (2.52686pt too high) detected at line 1181
 Package Listings Warning: Text dropped after begin of listing on input line 2.
 
 )
-Overfull \vbox (2.52686pt too high) detected at line 1253
+Overfull \vbox (2.52686pt too high) detected at line 1262
  []
 
 [69
@@ -1510,7 +1510,7 @@ dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2022/texmf-dist/fonts
 blic/amsfonts/cm/cmtt12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmtt8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 tt9.pfb>
-Output written on algorithmanalysis.pdf (70 pages, 602609 bytes).
+Output written on algorithmanalysis.pdf (70 pages, 602946 bytes).
 PDF statistics:
  1930 PDF objects out of 2073 (max. 8388607)
  1792 compressed objects within 18 object streams

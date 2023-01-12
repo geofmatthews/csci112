@@ -429,9 +429,9 @@ a^{n+1}-1 &\approx a^{n+1}
 \end{align*}
 Therefore
 \begin{align*}
-1+a+a^2+\ldots+a^n &= \frac{a^{n+1}-1}{a-1}\\\\
+1+a+a^2+\ldots+a^n &= \frac{a^{n+1}-1}{a-1}\\
   &\approx \left(\frac{a}{a-1}\right) a^n\\
-  &= ka^n
+  &= ka^n& 1<k\leq2
 \end{align*}
   
 
@@ -480,7 +480,8 @@ This will be a positive integer independent of units.
 
 \bfr{Big O notation}
 \bi
-\li We assume all our functions are positive (they measure elapsed time, after all).
+\li We assume all our functions are positive integers (they measure number
+of times something is done).
 \li We say that a function $f(x)$ is  Big-O   $g(x)$, 
 \[ f(x) = O(g(x)) \]
 if there is some constant, $C$, such that $f(x) \leq Cg(x)$
@@ -546,7 +547,15 @@ implies
 \begin{align*}
 f(x) = O(g(x))
 \end{align*}
-So we can use l'Hopital's rule!
+
+For example:
+\begin{align*}
+\lim_{x\rightarrow\infty}\frac{3x^2 + 10x + 2}{x^2} = 3
+\end{align*}
+And so $3x^2+10x+2 =O(x^2)$
+
+\vfill
+We can also use l'Hopital's rule!
 \end{frame}
 
 \bfr{Big O Hierarchy}
@@ -702,7 +711,7 @@ for i in range(n):
     x = x + f(x) + j
 \end{lstlisting}
 \colb
-\[O(n^2)\]
+\[\frac{n(n-1)}{2}=O(n^2)\]
 \colc
 
 \begin{center}
