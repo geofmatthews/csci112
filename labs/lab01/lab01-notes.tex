@@ -95,12 +95,13 @@ and all you have to do is hit run on the unit test file to see if you've got it 
 yet.
 \columnbreak
 \begin{lstlisting}
-    def test_rotate_transform(self):
-        self.assertEqual(
-            rotate_transform(
-                [
-                    [2, 4],
-                    [0, 0]], 1),
+def test_rotate_transform(self):
+    self.assertEqual(
+        rotate_transform(
+            [
+                [2, 4],
+                [0, 0]
+                ], 1),
             [
                 [0, 2],
                 [0, 4]
@@ -147,6 +148,10 @@ d[i,j] = x
 do your work, and then convert it back when you're done.
 \li The conversion from lists to dictionaries and back can be a method of your
 \lstinline{Matrix} class.
+\li Also remember that a dictionary is a persistent object.
+If a dictionary is a global variable, and you have various functions
+putting things into it, they {\em all} stay there, in one place, no matter how many
+different functions access it.
 \li On the other hand, if you've got a \lstinline{Matrix} class, you can replace
 \begin{lstlisting}
 ls[i][j] = x
@@ -197,7 +202,7 @@ and final positions?
 \ei
 \begin{multicols}{2}
 \li {\bf Recursion}, on the other hand, involves breaking the original
-problem into a smaller problem of the same kind.
+problem into  smaller problems of the same kind.
 \bi
 \li For instance, we can cut the first column off, and get the
 two pieces at right.
