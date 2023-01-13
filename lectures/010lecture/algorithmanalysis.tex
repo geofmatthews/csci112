@@ -1033,8 +1033,7 @@ def powlog(a, b):
   elif b % 2 == 1:
     return a * powlog(a, b-1)
   else:
-    x = powlog(a, b//2)
-    return x * x
+    return powlog(a, b//2) ** 2
 \end{lstlisting}
 
 What are their running times?
