@@ -45,8 +45,8 @@
 \newcommand{\li}{\item}
 \newcommand{\ei}{\end{itemize}}
 
-\title{Doubly Linked Lists}
-\author{CSCI 112, Lab 4}
+\title{Threaded Binary Search Trees}
+\author{CSCI 112, Lab 8}
 \date{}
 
 \begin{document}
@@ -73,32 +73,24 @@ number, and
 a short description of the lab, as well as documentation pertinent
 to that particular file.
 
-\item[Doubly linked list:] 
-The linked list implementation given in the text is called a singly linked list 
-because each node has a single reference to the next node in sequence. 
-An alternative implementation is known as a doubly linked list. 
-In this implementation, each node has a reference to the next node 
-(commonly called next) as well as a reference to the preceding node 
-(commonly called back). The head reference also contains two references,
- one to the first node in the linked list and one to the last.
- 
- Implement this data structure in Python.  Follow the style of the
- singly-linked list in the text.  Implement all the operations 
-listed in \S 4.20.  Call the file \lstinline{doublelist.py}.
+\item[The project:]  Add two modifications to the binary search tree of the textbook.
+Make your modifications as small as possible.
+\begin{enumerate}
+\li
+Modify the code for a binary search tree to make it threaded. Write a non-recursive inorder traversal method for the threaded binary search tree. A threaded binary tree maintains a reference from each node to its successor.
+\li
+Modify our implementation of the binary search tree so that it handles duplicate keys properly. That is, if a key is already in the tree then the new payload should replace the old rather than add another node with the same key.
+\end{enumerate}
 
-Write up an analysis of all of your operations and deduce their
-Big-O runtime, based on your code.  Contrast each one with
-the runtime of the singly-linked list from the text.  When, and if,
-they differ, say why one has a better runtime than the other.
+\item[Unit tests:] The unmodified version of a binary search tree and your modified version
+should behave the same for any sequence of operations.  This should suggest an easy way
+to create unit tests for every operation.
 
-At the end of your writeup, discuss why one or the other 
-implementation would be better or worse, and in which situations.
-Title the writeup either {\tt singledouble.txt} or {\tt singledouble.tex}.
+\item[File names:] Call your module {\tt tbst.py} and your unit test module
+{\tt tbst\_test.py}, place in a folder {\tt csci112lab08yourname} zip and turn in to canvas.
 
-Zip all files in a folder called {\tt csci312lab03yourname} and turn in on canvas
 
 \end{description}
-
 
 
 \end{document}

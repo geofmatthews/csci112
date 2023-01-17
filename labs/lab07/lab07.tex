@@ -45,8 +45,8 @@
 \newcommand{\li}{\item}
 \newcommand{\ei}{\end{itemize}}
 
-\title{Doubly Linked Lists}
-\author{CSCI 112, Lab 4}
+\title{$O(n\log n)$ {\em vs.} $O(n^2)$ }
+\author{CSCI 112, Lab 7}
 \date{}
 
 \begin{document}
@@ -73,32 +73,21 @@ number, and
 a short description of the lab, as well as documentation pertinent
 to that particular file.
 
-\item[Doubly linked list:] 
-The linked list implementation given in the text is called a singly linked list 
-because each node has a single reference to the next node in sequence. 
-An alternative implementation is known as a doubly linked list. 
-In this implementation, each node has a reference to the next node 
-(commonly called next) as well as a reference to the preceding node 
-(commonly called back). The head reference also contains two references,
- one to the first node in the linked list and one to the last.
- 
- Implement this data structure in Python.  Follow the style of the
- singly-linked list in the text.  Implement all the operations 
-listed in \S 4.20.  Call the file \lstinline{doublelist.py}.
+\item[The project:]  Many of the $O(n^2)$ sorts are faster than the
+$O(n\log n)$ sorts when they array is  small because they have
+less overhead.  Also they can be faster when only a few points
+are out of order, because  they can sort in
+just a few passes.  If this is less than $\log n$, then it can be an
+improvement.
 
-Write up an analysis of all of your operations and deduce their
-Big-O runtime, based on your code.  Contrast each one with
-the runtime of the singly-linked list from the text.  When, and if,
-they differ, say why one has a better runtime than the other.
+Develop a series of tests ??????????????
 
-At the end of your writeup, discuss why one or the other 
-implementation would be better or worse, and in which situations.
-Title the writeup either {\tt singledouble.txt} or {\tt singledouble.tex}.
+\item[The project:] 
+\item[File names:] Call your module {\tt tbst.py} and your unit test module
+{\tt tbst\_test.py}, place in a folder {\tt csci112lab07yourname} zip and turn in to canvas.
 
-Zip all files in a folder called {\tt csci312lab03yourname} and turn in on canvas
 
 \end{description}
-
 
 
 \end{document}

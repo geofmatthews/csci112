@@ -101,7 +101,8 @@ Implement this first so that you can create a unit test module
 and test your sorting implementations.
 
 \item[Improved quicksort partition:] Develop a quicksort ternary partition that traverses
-the array only once, and partitions in place ({\em i.e.} using no extra storage).  To partition
+the array only once, and partitions in place ({\em i.e.} using constant extra storage,
+that doesn't grow with the array size).  To partition
 an array between indices \lstinline{low} and \lstinline{hi}, you will
 need two pivots, which will be elements at \lstinline{low} and \lstinline{hi}.  If the
 first element is larger than the last, swap them first.
@@ -154,16 +155,22 @@ A trace of the algorithm as I implemented it is shown below:
 \item[Testing runtime:]  The runtime of binary and tertiary quicksort and mergesort should
 be very close to each other, all of them being $O(\log n)$.  The ternary algorithms
 should be slightly faster since $\log_3(n) < \log_2(n)$, but since they have more
-overhead be slightly slower.  Run some tests to see if you can get consistent results
+overhead they may be slightly slower, at least for small lists.
+It is possible that they will show some improvement over the binary versions
+as the array gets largs.  Run some tests to see if you can get consistent results
 as to whether tertiary is faster or slower than binary, or about the same.  Write up
 your findings in a short document called either \lstinline{sorts_runtime.txt} or
 \lstinline{sorts_runtime.tex}.  Please do not use any other word processing:
 either plain ascii text or \LaTeX.
 
+\item[Fair tests:] Make sure you instrument your tests so that each algorithm
+is used on the same starting array.  If you use random arrays then some algorithms
+may ``get lucky'' and have easier starting arrays than others, skewing the results.
+
 \item[File names:]  Put all four sorting algorithms (mergesort and quicksort, binary and
 tertiary) in a single file called \verb|sorts.py|.  Put your unit tests in the file \verb|sorts_test.py|.
-Put your runtime tests in a file called \verb|sorts_runtime.py|.  Zip all three together
-with your writeup into a folder
+Put your runtime tests in a file called \verb|sorts_runtime.py|.  Zip all three together with 
+your writeup into a folder
 called \verb|lab06yourname| (where \verb|yourname| is your name) and submit to canvas.
 
 \end{description}
