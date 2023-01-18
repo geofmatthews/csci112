@@ -45,7 +45,7 @@
 \newcommand{\li}{\item}
 \newcommand{\ei}{\end{itemize}}
 
-\title{FibLog}
+\title{Fibonacci $O(\log n)$}
 \author{CSCI 112, Lab 2}
 \date{}
 
@@ -112,6 +112,15 @@ Which should enable the following interactions:
 |    c    d|
 \end{lstlisting}
 
+Recall that the product of a matrix $A$ with entries $a_{ij}$
+and $B$ with entries $b_{ij}$, when the number of columns in $A$ is
+the same as the number of rows in $B$,
+ is a matrix $C$
+with entries
+\[
+c_{ij} = \sum_k a_{ik}b_{kj}
+\]
+
 Make sure that exponentiation runs in $O(\log n)$ time.
 
 \item[Unit test:]  Implement a unit test module for your matrix class. Call
@@ -121,7 +130,7 @@ the unit test module \lstinline{matrix_test.py}.
 implement the Fibonacci function three different ways.  One will
 execute in exponential time, $O(2^n)$, one in linear time, $O(n)$, and one in log time
 $O(\log n)$.
-Mathematically, the fibonacci function is defined as follows.
+Mathematically, the fibonacci function is 
 defined as 
 \[
 f(n) = \left\{\begin{array}{ll}
@@ -150,19 +159,19 @@ f(n) = \left\{\begin{array}{ll}
  magnitude estimates of their runtimes. 
  
  This writeup must be in either a plain text or a \LaTeX\ document.
- \LaTeX is optional, but I highly recommend that you learn to use
+ \LaTeX\ is optional, but I highly recommend that you learn to use
  it as soon as possible.  There are many online tutorials, and {\em all}
  of my lab notes and lectures are written in \LaTeX!  A good place to
  get started in \LaTeX\ is \url{https://www.overleaf.com/}.
  
  Put this writeup in a file
- called either {\tt lab01writeup.txt}
- or  {\tt lab01writeup.tex}
+ called either {\tt lab02writeup.txt}
+ or  {\tt lab02writeup.tex}
  
  If you use \LaTeX\ you may leave in place the miscellaneous
  files produced on compilation to pdf format. 
  
- \item[Turn in:] Put the following files into a folder called {\tt lab01csci112},
+ \item[Turn in:] Put the following files into a folder called {\tt csci112lab02yourname},
  zip it into a single compressed file and submit to canvas:
 
 \bi
@@ -173,8 +182,8 @@ f(n) = \left\{\begin{array}{ll}
 \li \lstinline{fibonacci_timing.py}
 \li Either:
 \bi
-\li \lstinline{lab01writeup.txt}
-\li \lstinline{lab01writeup.tex}
+\li \lstinline{lab02writeup.txt}
+\li \lstinline{lab02writeup.tex}
 \ei
 \ei
  
