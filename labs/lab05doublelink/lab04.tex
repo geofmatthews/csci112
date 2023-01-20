@@ -45,7 +45,7 @@
 \newcommand{\li}{\item}
 \newcommand{\ei}{\end{itemize}}
 
-\title{Infix Calculator}
+\title{Doubly Linked Lists}
 \author{CSCI 112, Lab 4}
 \date{}
 
@@ -73,62 +73,29 @@ number, and
 a short description of the lab, as well as documentation pertinent
 to that particular file.
 
-\item[Calculator:] Finish the following two problems from the text:
-\begin{enumerate}
-\item
-Implement a direct infix evaluator that combines the functionality of infix-to-postfix conversion and the postfix evaluation algorithm. Your evaluator should process infix tokens from left to right and use two stacks, one for operators and one for operands, to perform the evaluation.
-\item
-Turn your direct infix evaluator from the previous problem into a calculator.
-\end{enumerate}
+\item[Doubly linked list:] 
+The linked list implementation given in the text is called a singly linked list 
+because each node has a single reference to the next node in sequence. 
+An alternative implementation is known as a doubly linked list. 
+In this implementation, each node has a reference to the next node 
+(commonly called next) as well as a reference to the preceding node 
+(commonly called back). The head reference also contains two references,
+ one to the first node in the linked list and one to the last.
+ 
+ Implement this data structure in Python.  Follow the style of the
+ singly-linked list in the text.  Implement all the operations 
+listed in \S 4.20.  Call the file \lstinline{doublelist.py}.
 
-\item[Tokenizing:]  Instead of using single-character numbers, as in the text,
-use my tokenizing function found in \lstinline{tokens.py}.  This allows the use
-of floats, too.  Note that the tokenizer uses \lstinline{split}, so all tokens will need
-whitespace around them, e.g.
-\begin{lstlisting}
-( 3 + 1.4e5 ) * ( 4 - 22 )
-\end{lstlisting}
+Write up an analysis of all of your operations and deduce their
+Big-O runtime, based on your code.  Contrast each one with
+the runtime of the singly-linked list from the text.  When, and if,
+they differ, say why one has a better runtime than the other.
 
-\item[Turn in:]  A file named \lstinline{calculator.py}, with a function
-called \lstinline{calc} with the following behavior:
-\begin{lstlisting}
->>> from calculator import calc
->>> calc()
-calc> 2 + 2
-4
-calc> ( 3 * ( 2 + 2 ) )
-12
-\end{lstlisting}
+At the end of your writeup, discuss why one or the other 
+implementation would be better or worse, and in which situations.
+Title the writeup either {\tt singledouble.txt} or {\tt singledouble.tex}.
 
-A unit test module called \lstinline{calc_test.py}, that tests the major
-functionality of your calculator functions.
-
-Zip these functions, together with \lstinline{tokens.py} and any other
-modules you built, in a folder called \lstinline{csci112lab04yourname} zip and submit to canvas.
-
-\item[Optional additions:]~ 
-
-\bi
-\li Add the \lstinline{**} operator.  Note that this has higher precedence
-than all the others, and is also right associative.  You will need to think through
-how to handle the operator stack for this one, and make the necessary
-additions to the algorithm outlined in \S 4.9.2.
-
-\li Fix the tokenizer so we don't have
-to put spaces around things:
-\begin{lstlisting}
-( 3+1.4e5)*(4-22)
-\end{lstlisting}
-
-\li Add error checking to the tokenizer, so that the user gets meaningful
-feedback from expressions like these:
-\fbox{\lstinline{3 + )}}, 
-\fbox{\lstinline{4 + * 5}}, and
-\fbox{\lstinline{( 3 ( 4 + 5))}}.
-
-
-\ei
-
+Zip all files in a folder called {\tt csci312lab03yourname} and turn in on canvas
 
 \end{description}
 

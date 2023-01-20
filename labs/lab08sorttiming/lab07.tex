@@ -45,8 +45,8 @@
 \newcommand{\li}{\item}
 \newcommand{\ei}{\end{itemize}}
 
-\title{Infix Calculator}
-\author{CSCI 112, Lab 4}
+\title{$O(n\log n)$ {\em vs.} $O(n^2)$ }
+\author{CSCI 112, Lab 7}
 \date{}
 
 \begin{document}
@@ -73,65 +73,21 @@ number, and
 a short description of the lab, as well as documentation pertinent
 to that particular file.
 
-\item[Calculator:] Finish the following two problems from the text:
-\begin{enumerate}
-\item
-Implement a direct infix evaluator that combines the functionality of infix-to-postfix conversion and the postfix evaluation algorithm. Your evaluator should process infix tokens from left to right and use two stacks, one for operators and one for operands, to perform the evaluation.
-\item
-Turn your direct infix evaluator from the previous problem into a calculator.
-\end{enumerate}
+\item[The project:]  Many of the $O(n^2)$ sorts are faster than the
+$O(n\log n)$ sorts when they array is  small because they have
+less overhead.  Also they can be faster when only a few points
+are out of order, because  they can sort in
+just a few passes.  If this is less than $\log n$, then it can be an
+improvement.
 
-\item[Tokenizing:]  Instead of using single-character numbers, as in the text,
-use my tokenizing function found in \lstinline{tokens.py}.  This allows the use
-of floats, too.  Note that the tokenizer uses \lstinline{split}, so all tokens will need
-whitespace around them, e.g.
-\begin{lstlisting}
-( 3 + 1.4e5 ) * ( 4 - 22 )
-\end{lstlisting}
+Develop a series of tests ??????????????
 
-\item[Turn in:]  A file named \lstinline{calculator.py}, with a function
-called \lstinline{calc} with the following behavior:
-\begin{lstlisting}
->>> from calculator import calc
->>> calc()
-calc> 2 + 2
-4
-calc> ( 3 * ( 2 + 2 ) )
-12
-\end{lstlisting}
-
-A unit test module called \lstinline{calc_test.py}, that tests the major
-functionality of your calculator functions.
-
-Zip these functions, together with \lstinline{tokens.py} and any other
-modules you built, in a folder called \lstinline{csci112lab04yourname} zip and submit to canvas.
-
-\item[Optional additions:]~ 
-
-\bi
-\li Add the \lstinline{**} operator.  Note that this has higher precedence
-than all the others, and is also right associative.  You will need to think through
-how to handle the operator stack for this one, and make the necessary
-additions to the algorithm outlined in \S 4.9.2.
-
-\li Fix the tokenizer so we don't have
-to put spaces around things:
-\begin{lstlisting}
-( 3+1.4e5)*(4-22)
-\end{lstlisting}
-
-\li Add error checking to the tokenizer, so that the user gets meaningful
-feedback from expressions like these:
-\fbox{\lstinline{3 + )}}, 
-\fbox{\lstinline{4 + * 5}}, and
-\fbox{\lstinline{( 3 ( 4 + 5))}}.
-
-
-\ei
+\item[The project:] 
+\item[File names:] Call your module {\tt tbst.py} and your unit test module
+{\tt tbst\_test.py}, place in a folder {\tt csci112lab07yourname} zip and turn in to canvas.
 
 
 \end{description}
-
 
 
 \end{document}
