@@ -89,6 +89,10 @@ whitespace around them, e.g.
 ( 3 + 1.4e5 ) * ( 4 - 22 )
 \end{lstlisting}
 
+\item[Operators:] You must support addition, subtraction, multiplication
+and division.  Multiplication and division have higher precedence than 
+addition and subtraction.  Otherwise everything is left associative.
+
 \item[Turn in:]  A file named \lstinline{calculator.py}, with a function
 called \lstinline{calc} with the following behavior:
 \begin{lstlisting}
@@ -114,11 +118,9 @@ than all the others, and is also right associative.  You will need to think thro
 how to handle the operator stack for this one, and make the necessary
 additions to the algorithm outlined in \S 4.9.2.
 
-\li Fix the tokenizer so we don't have
-to put spaces around things:
-\begin{lstlisting}
-( 3+1.4e5)*(4-22)
-\end{lstlisting}
+Include  a separate document explaining how your
+algorithm correctly handles right associative operators.
+
 
 \li Add error checking to the tokenizer, so that the user gets meaningful
 feedback from expressions like these:
