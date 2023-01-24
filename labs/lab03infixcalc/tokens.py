@@ -36,6 +36,11 @@ def split_string(s):
         if s[1] not in string.digits:
             return [s[0]] + split_string(s[1:])
     toke = ''
+    if s[0] in string.ascii_letters:
+        while s and s[0] in string.ascii_letters:
+            toke += s[0]
+            s = s[1:]
+        return [toke] + split_string(s[1:])     
     if s[0] in '+-':
         toke += s[0]
         s = s[1:]
@@ -58,4 +63,7 @@ def split_string(s):
     
 def tokenize(s):
     return [parse_number(s1) for s1 in split_string(s)]
+
+if __name__ == '__main__':
+    print(tokenize('xyz*(0.--23+(4.2--5e3+.0)**2  - x'))
 

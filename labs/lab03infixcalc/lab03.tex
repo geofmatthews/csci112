@@ -77,32 +77,48 @@ to that particular file.
 \begin{enumerate}
 \item
 Implement a direct infix evaluator that combines the functionality of infix-to-postfix conversion and the postfix evaluation algorithm. Your evaluator should process infix tokens from left to right and use two stacks, one for operators and one for operands, to perform the evaluation.
+
+Follow the textbook's style.  Try to use as much of the code from the textbook
+as possible.  You should be able to simply modify the \lstinline{infixToPostfix}
+function using the \lstinline{doMath} function.
 \item
 Turn your direct infix evaluator from the previous problem into a calculator.
+This will simply print a prompt, read the input, evaluate the arithmetic 
+expression, print the result, and loop.  Here's mine in action:
+\begin{Verbatim}[frame=single]
+>>> repl()
+Geoff's Amazing Calculator! >>> 2+2
+4
+Geoff's Amazing Calculator! >>> 5**5
+3125
+Geoff's Amazing Calculator! >>> 3 + 4 * 5
+23
+Geoff's Amazing Calculator! >>> 3 * 4 + 5
+17
+Geoff's Amazing Calculator! >>> quit
+>>> 
+\end{Verbatim}
+{\tt repl} stands for ``read, evaluate, print, loop''
+
 \end{enumerate}
+
 
 \item[Tokenizing:]  Instead of using single-character numbers, as in the text,
 use my tokenizing function found in \lstinline{tokens.py}.  This allows the use
-of floats, too.  Note that the tokenizer uses \lstinline{split}, so all tokens will need
-whitespace around them, e.g.
-\begin{lstlisting}
-( 3 + 1.4e5 ) * ( 4 - 22 )
-\end{lstlisting}
+of floats, too. 
+
 
 \item[Operators:] You must support addition, subtraction, multiplication
 and division.  Multiplication and division have higher precedence than 
 addition and subtraction.  Otherwise everything is left associative.
 
 \item[Turn in:]  A file named \lstinline{calculator.py}, with a function
-called \lstinline{calc} with the following behavior:
+called \lstinline{evaluate} with the following behavior, which does infix
+evaluation, for example:
 \begin{lstlisting}
->>> from calculator import calc
->>> calc()
-calc> 2 + 2
-4
-calc> ( 3 * ( 2 + 2 ) )
-12
+evaluate(`2+2')   =>   4
 \end{lstlisting}
+and a function called \lstinline{repl} which starts a read-eval-print loop.
 
 A unit test module called \lstinline{calc_test.py}, that tests the major
 functionality of your calculator functions.
@@ -113,20 +129,22 @@ modules you built, in a folder called \lstinline{csci112lab03yourname} zip and s
 \item[Optional additions:]~ 
 
 \bi
+\li Add error checking to the tokenizer, so that the user gets meaningful
+feedback from expressions like these:
+\fbox{\lstinline{3 + )}}, 
+\fbox{\lstinline{4 + * 5}}, and
+\fbox{\lstinline{( 3 ( 4 + 5))}},
+and the calculator continues to work, rather than stopping with an error.
+
 \li Add the \lstinline{**} operator.  Note that this has higher precedence
 than all the others, and is also right associative.  You will need to think through
 how to handle the operator stack for this one, and make the necessary
-additions to the algorithm outlined in \S 4.9.2.
+additions to the algorithm outlined in \S 4.9.2.  It is not easy.
 
 Include  a separate document explaining how your
 algorithm correctly handles right associative operators.
 
 
-\li Add error checking to the tokenizer, so that the user gets meaningful
-feedback from expressions like these:
-\fbox{\lstinline{3 + )}}, 
-\fbox{\lstinline{4 + * 5}}, and
-\fbox{\lstinline{( 3 ( 4 + 5))}}.
 
 
 \ei
