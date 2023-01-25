@@ -80,17 +80,17 @@ Implement a direct infix evaluator that combines the functionality of infix-to-p
 
 Follow the textbook's style.  Try to use as much of the code from the textbook
 as possible.  You should be able to simply modify the \lstinline{infixToPostfix}
-function using the \lstinline{doMath} function.
+function using the \lstinline{doMath} function.  Every time the function would
+output an operator, apply this operator to the top two items on the stack.
+Think about the order of operands and the order of stacking!
 \item
 Turn your direct infix evaluator from the previous problem into a calculator.
 This will simply print a prompt, read the input, evaluate the arithmetic 
 expression, print the result, and loop.  Here's mine in action:
 \begin{Verbatim}[frame=single]
 >>> repl()
-Geoff's Amazing Calculator! >>> 2+2
+Geoff's Amazing Calculator! >>> 2 + 2
 4
-Geoff's Amazing Calculator! >>> 5**5
-3125
 Geoff's Amazing Calculator! >>> 3 + 4 * 5
 23
 Geoff's Amazing Calculator! >>> 3 * 4 + 5
@@ -105,7 +105,13 @@ Geoff's Amazing Calculator! >>> quit
 
 \item[Tokenizing:]  Instead of using single-character numbers, as in the text,
 use my tokenizing function found in \lstinline{tokens.py}.  This allows the use
-of floats, too. 
+of floats, too.   It uses \lstinline{split()} to separate tokens, so all
+tokens must be separated by spaces, including operators and parentheses.
+For example:
+\begin{lstlisting}
+>>> tokenize('( 44 + -33.3 ) * 2 - 4')
+['(', 44, '+', -33.3, ')', '*', 2, '-', 4]
+\end{lstlisting}
 
 
 \item[Operators:] You must support addition, subtraction, multiplication
@@ -116,7 +122,7 @@ addition and subtraction.  Otherwise everything is left associative.
 called \lstinline{evaluate} with the following behavior, which does infix
 evaluation, for example:
 \begin{lstlisting}
-evaluate(`2+2')   =>   4
+evaluate(`2 + 2')   =>   4
 \end{lstlisting}
 and a function called \lstinline{repl} which starts a read-eval-print loop.
 
@@ -129,12 +135,19 @@ modules you built, in a folder called \lstinline{csci112lab03yourname} zip and s
 \item[Optional additions:]~ 
 
 \bi
+\li Write a better tokenizer so that spaces are not required where they are not
+needed, for example, 
+\fbox{\lstinline{(2+2)}}
 \li Add error checking to the tokenizer, so that the user gets meaningful
 feedback from expressions like these:
 \fbox{\lstinline{3 + )}}, 
 \fbox{\lstinline{4 + * 5}}, and
-\fbox{\lstinline{( 3 ( 4 + 5))}},
+\fbox{\lstinline{( 3 ( 4 + 5 ))}},
 and the calculator continues to work, rather than stopping with an error.
+
+
+\li Add some unary operators, such as \lstinline{sin} and \lstinline{cos} and \lstinline{exp}
+
 
 \li Add the \lstinline{**} operator.  Note that this has higher precedence
 than all the others, and is also right associative.  You will need to think through

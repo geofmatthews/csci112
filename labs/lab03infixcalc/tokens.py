@@ -1,69 +1,29 @@
 '''
 Tokenizes infix arithmetric expressions.
-converts ints and floats
-symbols: + = * / **
+converts ints and floats (but not sci notation: 1e5)
+symbols: + = * / ^
 and parentheses left as strings
+Uses split() so all tokens must be separated by spaces.
 
 Geoffrey Matthews
 2023
 '''
 
-import string
+import string, re
 
 def parse_number(s):
     try:
-        n = int(s)
+        return int(s)
     except:
         try:
-            n = float(s)
+           return float(s)
         except:
             return s
-    return n
 
-def split_string(s):
-    if len(s) == 0:
-        return []
-    elif s[0] in string.whitespace:
-        return split_string(s[1:])
-    elif s[0] in '()+/':
-        return [s[0]] + split_string(s[1:])
-    elif s[0] == '*':
-        if s[1] == '*':
-            return [s[0:2]] + split_string(s[2:])
-        else:
-            return [s[0]] + split_string(s[1:])
-    elif s[0] == '-':
-        if s[1] not in string.digits:
-            return [s[0]] + split_string(s[1:])
-    toke = ''
-    if s[0] in string.ascii_letters:
-        while s and s[0] in string.ascii_letters:
-            toke += s[0]
-            s = s[1:]
-        return [toke] + split_string(s[1:])     
-    if s[0] in '+-':
-        toke += s[0]
-        s = s[1:]
-    while s and s[0] in string.digits:
-        toke += s[0]
-        s = s[1:]
-    if s and s[0] in '.':
-        toke += s[0]
-        s = s[1:]
-    while s and s[0] in string.digits:
-        toke += s[0]
-        s = s[1:]
-    if s and s[0] in 'e':
-        toke += s[0]
-        s = s[1:]
-    while s and s[0] in string.digits:
-        toke += s[0]
-        s = s[1:]
-    return [toke] + split_string(s)
-    
 def tokenize(s):
-    return [parse_number(s1) for s1 in split_string(s)]
+    return [parse_number(x) for x in s.split()]
 
 if __name__ == '__main__':
-    print(tokenize('xyz*(0.--23+(4.2--5e3+.0)**2  - x'))
-
+    s1 = '(   34 + 456.34 ) * ( ( 234 - 99.4 ** 2) )'
+    print(tokenize(s1))
+    print(tokenize('2 - -2'))
