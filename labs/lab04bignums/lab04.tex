@@ -161,7 +161,8 @@ languages are either $2^{32} = 4.294.967.296$ or  $2^{64} = 18.446.744.073.709.5
 Integers larger than this are supported in software.
 
 When Python encounters integers that are too big for the 32 or 64 bit
-registers, it automatically converts them to bignums.  
+registers, it automatically converts them to bignums.   Python's bignums
+are implemented as dynamic arrays of digits in a large, fixed base.
 
 In this lab we will build a Bignum class of our own that supports arbitrarily large integers
 using linked lists.  Each cell in the linked list will hold a single position in
@@ -180,9 +181,9 @@ looks like:
   block/.style={draw, rectangle}
   }
 \node[block] (A) {3};
-\node[block,right of=A] (B) {7};
-\node[block,right of=B] (C) {4};
-\node[right of=C] (D) {};
+\node[block,left of=A] (B) {7};
+\node[block,left of=B] (C) {4};
+\node[left of=C] (D) {};
 \draw[->] (D) -- (C);
 \draw[->] (C) -- (B);
 \draw[->] (B) -- (A);
@@ -192,23 +193,60 @@ looks like:
 Note that the smallest digit will be at the head of the list.  This will make arithmetic
 much easier.
 
-Make your Bignum class general, so it will support any base.
+Make your Bignum class general, so it will support any base.  
+
+Since there's no such thing as an ``empty'' bignum, we will not need the header
+class used for linked lists in the book.  A bignum will hold the digit, the sign, and a 
+pointer to the next bigger digit.
 
 \item[Signs:]  Positive and negative numbers will be represented by
 a separate field in the class called \lstinline{Bignum.sign}, with the value
 of either plus or minus one.
 
-\item[Initializing and extracting Python ints:]  To make testing easy, Bignums will be initialized
+\item[Initializing with Python ints:]  To make testing easy, Bignums will be initialized
 by Python integers.  The initializing integer can be any size, of course,
 using Python's native integers.  You will convert this to your linked list
-representation of Bignums.
+representation of Bignums.  Here is the initializing routine for bignums
+that you should use:
+\begin{lstlisting}
+    def __init__(self, n, base = 17):
+        self.base = base
+        if n < 0:
+            self.sign = -1
+        else:
+            self.sign = 1
+        self.n = abs(n)
+        self.next = None
+        self.overflow()
+\end{lstlisting}
+Needless to say, the \lstinline{Bignum.overflow} method will take care of
+normalizing the integer to the range \lstinline{[0..(self.base-1)]} and
+pushing any overflows (``carries'') along to the next cell in the list.
 
+\item[Extracting Python ints:]
 Also to make testing easy, include a \lstinline{Bignum.int} method that
 converts your bignum into a Python int.  This will support easy testing
 expressions such as:
 \begin{lstlisting}
-n = 2**100_000
+n = 2**100
 self.assertEqual(n, Bignum(n).int())
+\end{lstlisting}
+
+\item[String method:]
+While it will be nice to see the bignums converted to Python integers for 
+testing, 
+I find it easier to debug if I can see what the data structure looks like.
+Build a \lstinline{__str__} method that shows the contents of bignums like this:
+\begin{lstlisting}
+>>> print(Bignum(20,8))
+Bignum base 8: 4:2:+
+>>> print(Bignum(20,2))
+Bignum base 2: 0:0:1:0:1:+
+>>> print(Bignum(-123,10))
+Bignum base 10: 3:2:1:-
+>>> print(Bignum(50,16))
+Bignum base 16: 2:3:+
+>>> 
 \end{lstlisting}
 
 \item[Addition and subtraction:]  Once you've got your Bignum class
@@ -222,9 +260,9 @@ to subtract a negative number from a positive number, just convert the negative
 to a positive and then add.  Or, for another example, 
 to subtract a larger number, $a$, from a smaller number, $b$, use the formula:
 \[
-b - a = -(a = b)
+b - a = -(a - b)
 \]
-So you will alwasy be subtracting the smaller from the larger.   There are a few
+So you will always be subtracting the smaller from the larger.   There are a few
 other cases for you to work out: each operand can be positive or negative,
 and either one could be the larger.  There should be eight cases in all, then, right?
 
@@ -232,48 +270,100 @@ and either one could be the larger.  There should be eight cases in all, then, r
 $12345 - 12300$ in base 10.  Your Bignum class should clean up any result
 by removing these unecessary zeros.
 
+\begin{lstlisting}
+>>> print(Bignum(123456, 10) - Bignum(123000, 10))
+Bignum base 10: 6:5:4:+
+>>> 
+\end{lstlisting}
 
-\item[Multiplication:]
-The standard algorithm for multiplication is somewhat complex to implement
-using our representation.  Fortunately, there is a way to compute the product
-in $O(\log n)$ time just using addition and subtraction:
-\[
-ab = \left\{\begin{array}{ll}
-0    &  \mbox{if $b=0$}\\
-a + a(b-1)  & \mbox{if $b$ is odd}\\
-2(a(b/2)) &\mbox{otherwise}
-\end{array}\right.
-\]
-You will also have to implement division by 2.  This should be easy.  Just think
-carefully about how you do it using the standard long division algorithm, and
-remember when you ``carry'' or ``borrow'' 1, you are carrying or borrowing
-the base amount, not 10.
 
-Implement this strategy to support the \lstinline{__mul__} method for your
-bignums.  Again, make sure you handle the signs.  It will be slightly quicker if
-you alwasy choose the smaller number for the recursion, right?
+\item[Recursion:]  Note, if you use recursion in your bignum calculations,
+you may run into recursion depth limits with very large numbers.
+This will not be considered a bug.
 
 \item[Calculator:] Use your infix calculator from the previous lab to
 make a Bignum calculator!
 
-\item[Timing:]  Run some experiments to see how the timing of your
+\item[Turn in:] Files {\tt bignum.py} and {\tt bignum\_test.py} in folder
+{\tt csci112lab04yourname}, zipped and turned into Canvas.
+
+\item[Optional additions:] ~
+
+\begin{itemize}
+\item
+Multiplication can be done with the standard algorithm, or using the following facts:
+\[
+ab = 
+\left\{\begin{array}{ll}
+0 & \mbox{if $b=0$} \\
+a+a(b-1) & \mbox{if $b$ is odd} \\
+2(a(b/2)) & \mbox{if $b$ is even}
+\end{array}\right.
+\]
+You will have to implement a divide by 2 function, but the rest can be done
+with recursion and addition.
+
+\item Division, exponentiation, {\em etc.}
+
+\item Run some experiments to see how the timing of your
 Bignums changes with the size of the base.  Note that Python will
 not use native integers if the size of the integer is greater 
 than the size of a native integer.  Since your calculations can result
-in numbers in the cells up to base$^2$, your base should probably
+in numbers in the cells up to 2(base), or base$^2$ if you do multiplication, 
+your base should probably
 not exceed $2^{16}$ for 32 bit computers, or $2^{32}$ for 64 bit
 computers.  (Why?)
 
 Once you find the best base for your implementation, compare
 times on your implementation with those for native Python bignums.
 How much slower are you?  Do you think it makes a big-O difference,
-or not?  Why?
+or not?  Why?  Can you prove it with some data?
 
 Write up your experiments and conclustions in a short document.
 
-\item[Optional:]  Division!  Exponentiation!  Implement \lstinline{gcd} and search for
-large primes!
     
+\end{itemize}
+
+\newpage
+\item[My implementation headers:]   
+You do not have to follow my implementation here, 
+but in my Bignum class 
+I used the following approach.  Some of my functions are recursive,
+and some are iterative.
+
+I have also supplied my unit test file, as a start, for yours.
+
+\begin{lstlisting}
+def __init__(self, n, base = 17):
+def __str__(self):
+def int(self):
+    '''convert to Python integer'''
+def copy(self, end=None):
+def add(self, other):
+    '''add bodies of numbers without regard to signs'''
+def __add__(self, other):
+    '''figure out signs and sizes, then add or sub and fix result'''
+def sub(self, other):
+    '''subtract bodies without regard to signs but allow larger and smaller each way'''
+def __sub__(self, other):
+    '''figure out signs then add or sub and fix result'''
+def cmp(self, other):
+    '''compare size of bodies, no signs, return -1,0,1 for less, equal, greater'''        
+def __lt__(self, other):
+    '''consider signs in comparison'''
+def __eq__(self, other):
+    '''needed for unit tests'''
+def remove_zeros(self):
+    '''remove leading zeros'''               
+ def inc_next(self, amt=1):
+    ''if amt > 0 'increment the next cell.  if absent, create it'''
+def overflow(self):
+    '''any cell that is larger than the base is reduced and carried to the next cell''' 
+def dec_next(self, amt=1):
+    '''if amt > 0 decrement next cell, if absent, raise error'''            
+def underflow(self):
+    '''any cell that is less than 0 is incremented by borrowing from the next'''
+\end{lstlisting}
 \end{description}
 
 

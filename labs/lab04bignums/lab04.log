@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.30)  22 JAN 2023 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.30)  29 JAN 2023 12:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1022,35 +1022,36 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {C:/Users/thatm/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-[3] (lab04.aux)
+[3] [4] (lab04.aux)
 Package rerunfilecheck Info: File `lab04.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28941 strings out of 476406
- 591656 string characters out of 2789566
- 1916787 words of memory out of 3000000
- 48817 multiletter control sequences out of 15000+600000
- 519920 words of font info for 63 fonts, out of 8000000 for 9000
+ 29014 strings out of 476406
+ 592673 string characters out of 2789566
+ 2174787 words of memory out of 3000000
+ 48834 multiletter control sequences out of 15000+600000
+ 520255 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,8n,104p,420b,1347s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/font
-s/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/thatm/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/thatm/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/thatm/AppData/Lo
-cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/thatm/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/th
-atm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
-/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
-/cm/cmtt10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmtt8.pfb>
-Output written on lab04.pdf (3 pages, 154537 bytes).
+ <C:\Users\thatm\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm
+1000.pk><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmbx10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmex10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmmi10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/thatm/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/thatm/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/thatm/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/tha
+tm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Us
+ers/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
+/cmti10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmtt10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmtt8.pfb>
+Output written on lab04.pdf (4 pages, 172773 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 70 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
