@@ -340,19 +340,19 @@ def int(self):
     '''convert to Python integer'''
 def copy(self, end=None):
 def add(self, other):
-    '''add bodies of numbers without regard to signs'''
+    '''add absolute values'''
 def __add__(self, other):
-    '''figure out signs and sizes, then add or sub and fix result'''
+    '''figure out signs, then add or sub and fix result'''
 def sub(self, other):
-    '''subtract bodies without regard to signs but allow larger and smaller each way'''
+    '''subtract absolute values, if self < other return negative of other-self'''
 def __sub__(self, other):
     '''figure out signs then add or sub and fix result'''
 def cmp(self, other):
-    '''compare size of bodies, no signs, return -1,0,1 for less, equal, greater'''        
+    '''compare absolute values, return -1,0,1 for less, equal, greater'''        
 def __lt__(self, other):
-    '''consider signs in comparison'''
+    '''less than, using signs and cmp'''
 def __eq__(self, other):
-    '''needed for unit tests'''
+    '''equality, using signs and cmp, needed for unit tests'''
 def remove_zeros(self):
     '''remove leading zeros'''               
  def inc_next(self, amt=1):
