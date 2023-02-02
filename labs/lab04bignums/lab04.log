@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  1 FEB 2023 11:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  2 FEB 2023 11:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -955,14 +955,14 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (./
-lab04.aux)
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+ (./lab04.aux)
 Package rerunfilecheck Info: File `lab04.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 28809 strings out of 475075
- 580202 string characters out of 5782996
+ 28810 strings out of 475075
+ 580208 string characters out of 5782996
  1234152 words of memory out of 5000000
  49671 multiletter control sequences out of 15000+600000
  477227 words of font info for 60 fonts, out of 8000000 for 9000
@@ -981,10 +981,10 @@ live/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022
 st/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/publ
 ic/cm-super/sfrm1000.pfb>
-Output written on lab04.pdf (4 pages, 162567 bytes).
+Output written on lab04.pdf (5 pages, 166122 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 70 named destinations out of 1000 (max. 500000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 145 compressed objects within 2 object streams
+ 71 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

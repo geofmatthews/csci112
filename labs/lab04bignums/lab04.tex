@@ -249,25 +249,93 @@ Bignum base 16: 2:3:+
 >>> 
 \end{lstlisting}
 
-\item[Addition and subtraction:]  Once you've got your Bignum class
+\item[Absolute value addition:] 
+Once you've got your Bignum class
 working, 
-implement the standard algorithms for addition and subtraction, as illustrated
-above, to support the \lstinline{__add__} and \lstinline{__sub__} methods
-for your Bignums.  
+implement the standard algorithm for addition, as illustrated
+above.  These will only have to work for the absolute value of the bignums,
+we will handle the signs later.  
 
-You will have to do a little sign checking at the beginning.  For example,
-to subtract a negative number from a positive number, just convert the negative
-to a positive and then add.  Or, for another example, 
-to subtract a larger number, $a$, from a smaller number, $b$, use the formula:
+The overflow, or carry, can be handled digit by digit, or you can simply
+allow each digit to be temporarily larger than the base, and fix them all
+at once after all the single-digit additions have been made.  For example,
+as a first step, you can add like this (base 10):
+
+\begin{tabular}{rrrrr}
+  &3 &9 &1 &5\\
+$+$ &1 &2 &4 &5\\
+\hline
+  &4 &11 &5 &10
+\end{tabular}\hfill and then correct the overflows: \hfill
+\begin{tabular}{rrrrcrrrr}
+4 & 11 & 5 & 10 & $\Rightarrow$ &5 & 1 & 6 & 0
+\end{tabular}
+
+Note that you may have to extend the answer with new cells if the
+answer has more digits than the summands.
+
+\item[Absolute value subtraction:]  Once you've got addition working
+and tested, think about subtraction.  The standard algorithm
+assumes that we're always subtracting a smaller from a larger.
+Implement this first.
+
+\item[Less than:]  You will have to implement a less than
+method in order to do subtraction in general.  This can be
+done recursively.  For example, to compare (base 10) 1234
+with 3435, we first compare (recursively) 123 with 343.
+We find that the first is less than the second, so we can return
+true immediately; it doesn't matter what the smaller digits are.
+
+On the other hand, if we compare 1234 with 1238, we first
+compare 123 with 123, and, finding them equal, we now have
+to compare the single digits 4 and 8 to see which is bigger.
+
+Your recursive procedure is going to have to tell you whether the
+first is less than, equal to, or greater than the second.  This is a 
+more general opeation than a simple less than comparison.
+Traditionally this operator has been called {\tt cmp}.  Comparing
+two items it returns -1 if the first is less than the second, 0
+if they are equal, and 1 if the first is greater than the second.
+
+Write this  {\tt cmp} method, and then use it to
+define a \lstinline{__lt__} method. 
+
+You can do this without recursion if you like.  You might consider
+reversing the list of digits, and counting them.
+
+\item[Subtraction of larger from smaller:]
+Now we can handle the case of subtracting a larger absolute value
+from a smaller, using the relation:
 \[
-b - a = -(a - b)
+a - b = -(b - a)
 \]
-So you will always be subtracting the smaller from the larger.   There are a few
+Now fix your absolute value subtraction so that it works 
+with numbers in either order.
+
+\item[General addition and subtraction:]  
+ To support the \lstinline{__add__} and \lstinline{__sub__} methods
+for your Bignums in general
+you will have to do a little sign checking at the beginning.  For example,
+to subtract a negative number from a positive number, just convert the negative
+to a positive and then add. 
+There are a few
 other cases for you to work out: each operand can be positive or negative,
-and either one could be the larger.  There should be eight cases in all, then, right?
+and we might be adding or subtracting.  Eight cases in all, right?  They 
+will look like this:
+\[
+\begin{array}{rcl}
+a + b & \Rightarrow & a + b \\
+a + -b & \Rightarrow & a - b \\
+-a + b &\Rightarrow& b - a \\
+-a + -b &\Rightarrow& -(a+b)
+\end{array}
+\]
+The subtraction cases are similar.  In each case the general problem
+has been reduced to an addition or subtraction of absolute values,
+with an optional sign correction at the end.
 
 \item[Leading zeros:]  Some operatrions may result in leading zeros, for example,
-$12345 - 12300$ in base 10.  Your Bignum class should clean up any result
+$12345 - 12300 = 00045$ in base 10.  Your Bignum class should clean up any result
 by removing these unecessary zeros.
 
 \begin{lstlisting}
@@ -276,9 +344,16 @@ Bignum base 10: 6:5:4:+
 >>> 
 \end{lstlisting}
 
+This is another case where you might want to think recursively.
+Just be sure to leave at least one zero, when the bignum is zero!
+
+Also, you can do it nonrecursively, in which case you again
+might want to consider reversing the list of digits.
+
 
 \item[Recursion:]  Note, if you use recursion in your bignum calculations,
-you may run into recursion depth limits with very large numbers.
+you may run into recursion depth limits with very large numbers and very
+small bases.
 This will not be considered a bug.
 
 \item[Calculator:] Use your infix calculator from the previous lab to
