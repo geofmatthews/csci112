@@ -14,7 +14,28 @@ def mypow(n, p):
         return n * mypow(n, p-1)
     else:
         return mypow(n, p//2) ** 2
-    
+
+# conceptual recursion elimination:
+# only have to remember whether to multiply
+# by n or square:
+def mypowstack(n, p):
+    s = stack()
+    while p > 0:
+        if p % 2 == 1:
+            push(s, 'multiply')
+            p -= 1
+        else:
+            push(s, 'square')
+            p //= 2
+    accumulator = 1
+    while not(empty(s)):
+        if s.pop() == 'multiply':
+            accumulator *= n
+        else:
+            accumulator *= accumulator
+    return accumulator
+            
+# Eliminate recursion syntactically:   
 # step 1, eliminate nested recursion:
 def mypow1(n, p):
     if p == 0:
@@ -123,13 +144,11 @@ def odd(n):
     if n == 0:
         return False
     else:
-        return not(even(n-1))
-            
-                     
+        return not(even(n-1)) 
 
 if __name__ == '__main__':
     for i in range(5,12):
-        print(pow(2,i), mypow(2,i), mypow1(2,i), mypow2(2,i), mypow3(2,i))
+        print(pow(2,i), mypowstack(2,i), mypow(2,i), mypow1(2,i), mypow2(2,i), mypow3(2,i))
         print(fibo(i), fibo1(i), fibo2(i), fibo3(i))
 
                 
