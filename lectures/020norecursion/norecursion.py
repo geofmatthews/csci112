@@ -139,16 +139,140 @@ def even(n):
     if n == 0:
         return True
     else:
-        return not(odd(n-1))
+        return odd(n-1)
 def odd(n):
     if n == 0:
         return False
     else:
-        return not(even(n-1)) 
+        return even(n-1)
+
+def even1(n):
+    'even'
+    if n == 0:
+        return True
+    else:
+        returnval = odd1(n-1)
+        'even2'
+        return returnval
+    
+def odd1(n):
+    'odd'
+    if n == 0:
+        return False
+    else:
+        returnval = even1(n-1)
+        'odd2'
+        return returnval
+
+def evens(n):
+    s = stack()
+    push(s, ['even', [n]])
+    while not(empty(s)):
+        location, vars = pop(s)
+        if location == 'even':
+            n = vars[0]
+            if n == 0:
+                returnval = True
+            else:
+                push(s, ['even2', []])
+                push(s, ['odd', [n-1]])
+        elif location == 'even2':
+            returnval = returnval
+        elif location == 'odd':
+            n = vars[0]
+            if n == 0:
+                returnval = False
+            else:
+                push(s, ['odd2',[]])
+                push(s, ['even',[n-1]])
+        elif location == 'odd2':
+            returnval = returnval
+    return returnval
+
+# Some locations are irrelevant because we have tail recursion:
+def odds(n):
+    return not(evens(n))
+        
+def evens2(n):
+    s = stack()
+    push(s, ['even', [n]])
+    while not(empty(s)):
+        location, vars = pop(s)
+        if location == 'even':
+            n = vars[0]
+            if n == 0:
+                returnval = True
+            else:
+                push(s, ['odd', [n-1]])
+        elif location == 'odd':
+            n = vars[0]
+            if n == 0:
+                returnval = False
+            else:
+                push(s, ['even',[n-1]])
+    return returnval
+
+def odds2(n):
+    return not(evens2(n))
+
+# A random function to practice with:
+
+def foo(n):
+    #A
+    if n < 3:
+        return n + 2
+    elif n % 3 == 0:
+        #B
+        return 4 + foo(n//3)
+    elif n % 3 == 1:
+        #C
+        return foo(n-1) + 3*n
+    else:
+        #D,E
+        return foo(n-1) + foo(n-2) + n
+
+def foos(n):
+    s = stack()
+    push(s, ['A', [n]])
+    while not(empty(s)):
+        location, vars = pop(s)
+        if location == 'A':
+            n = vars[0]
+            if n < 3:
+                returnval = n + 2
+            elif n % 3 == 0:
+                push(s, ['B', []])
+                push(s, ['A', [n//3]])
+            elif n % 3 == 1:
+                push(s, ['C', [n]])
+                push(s, ['A', [n-1]])
+            else:
+                push(s, ['D', [n]])
+                push(s, ['A', [n-1]])
+        elif location == 'B':
+            returnval = 4 + returnval
+        elif location == 'C':
+            n = vars[0]
+            returnval = returnval + 3*n
+        elif location == 'D':
+            n = vars[0]
+            push(s, ['E', [returnval, n]])
+            push(s, ['A', [n-2]])
+        elif location == 'E':
+            returnval1, n = vars
+            returnval = returnval1 + returnval + n
+    return returnval
+
+
 
 if __name__ == '__main__':
-    for i in range(5,12):
+    for i in range(5,15):
         print(pow(2,i), mypowstack(2,i), mypow(2,i), mypow1(2,i), mypow2(2,i), mypow3(2,i))
+    for i in range(5,15):
         print(fibo(i), fibo1(i), fibo2(i), fibo3(i))
+    for i in range(5,15):
+        print(even(i), even1(i), evens(i), evens2(i))
+    for i in range(5,15):
+        print(foo(i), foos(i))
 
                 
