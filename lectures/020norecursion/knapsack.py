@@ -3,6 +3,7 @@ class Item:
     def __init__(self, weight, value):
         self.weight = weight
         self.value = value
+        
 
 def knapsack_recursive(itemlist, totalweight):
     '''return the maximum value that can be put in a knapsack
@@ -31,9 +32,32 @@ def knapsack_dynamic(itemlist, totalweight):
                 values[item,weight] = max(a,b)
             else:
                 values[item,weight] = values[item-1, weight]
+    texdump(values,len(itemlist)+1,totalweight+1)
     return values[len(itemlist),totalweight]
 
+def texdump(values, nrows, ncols):
+    print('\\begin{tabular}{|' + 'c|'*(1+ncols) + '}\\hline')
+    for j in range(ncols+1):
+        if j < 1:
+            print('   &',end='')
+        elif j < ncols:
+            print(j-1,  end=' &')
+        else:
+            print(j-1, end='\\\\\\hline')
+    for i in range(nrows):
+        print(i, end=' &')
+        for j in range(ncols):
+            ender = ' &' if j < ncols-1 else ' \\\\\\hline\n'
+            if (i,j) in values:
+                print(values[i,j], end=ender)
+            else:
+                print('', end=ender)
+    print('\\end{tabular}')
+            
+            
+
 if __name__ == '__main__':
+    import random
         
     items1 = [Item(2,3), Item(3,4), Item(4,8), Item(5,8), Item(9,10)]
     items2 = [Item(10,60), Item(20,100), Item(30,120)]
@@ -41,5 +65,10 @@ if __name__ == '__main__':
     print(knapsack_recursive(items2, 50))
     print(knapsack_dynamic(items1, 20))
     print(knapsack_dynamic(items2, 50))
+    weights = [random.randint(2,20) for i in range(5)]
+    values = [random.randint(2,20) for i in range(5)]
+    items = [Item(i,j) for i,j in zip(weights,values)]
+    print(list(zip(weights,values)))
+    print(knapsack_dynamic(items, 20))
             
     

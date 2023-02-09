@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[landscape,margin=1in]{geometry}
+\usepackage{tikz}
+\begin{document}
+\Large
+
+\begin{tabular}{cc}
+\\
+\multicolumn{2}{c}{Item}\\
+Wt & Val\\\hline
+2 & 3 \\\hline
+3 & 4 \\\hline
+4 & 8 \\\hline
+5 & 8 \\\hline
+9 & 10 \\\hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\multicolumn{22}{c}{Knapsack Capacity}\\\hline
+   &0 &1 &2 &3 &4 &5 &6 &7 &8 &9 &10 &11 &12 &13 &14 &15 &16 &17 &18 &19 &20\\\hline0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 \\\hline
+1 &0 &0 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 &3 \\\hline
+2 &0 &0 &3 &4 &4 &\color{blue}7 &7 &7 &7 &\color{blue}7 &7 &7 &7 &7 &7 &7 &7 &7 &7 &7 &7 \\\hline
+3 &0 &0 &3 &4 &8 &8 &11 &12 &12 &\color{red}15 &15 &15 &15 &15 &15 &15 &15 &15 &15 &15 &15 \\\hline
+4 &0 &0 &3 &4 &8 &8 &11 &12 &12 &16 &16 &19 &20 &20 &23 &23 &23 &23 &23 &23 &23 \\\hline
+5 &0 &0 &3 &4 &8 &8 &11 &12 &12 &16 &16 &19 &20 &20 &23 &23 &23 &23 &26 &26 &29 \\\hline
+\end{tabular}
+
+\begin{itemize}
+\item Each cell holds the maximum value for a knapsack of the given
+capacity, using only items from that row or above.
+We can fill in the table from upper left to lower right.
+\item Each item is the maximum of
+either not adding the current item, or adding it.  This means choosing
+the maximum of
+\begin{itemize}
+\item The value above it\\(we don't add the current item)
+\item The value above and to the left by the item weight, plus the item value \\
+(we add the current item, and maximize the use of the remaining weight)
+\end{itemize}
+For example the red 15 in cell {\tt ((4,8), 9)}, is the maximum of 7 (directly above)
+and 7 (the value above and 4 spaces to the left) plus 8.
+\end{itemize}
+
+
+
+
+
+\begin{tabular}{cc}
+\\
+\multicolumn{2}{c}{Item}\\
+Wt & Val\\\hline
+10 & 18 \\\hline
+4 & 4 \\\hline
+17 & 10 \\\hline
+18 & 19 \\\hline
+5 & 10 \\\hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\multicolumn{22}{c}{Knapsack Capacity}\\\hline
+   &0 &1 &2 &3 &4 &5 &6 &7 &8 &9 &10 &11 &12 &13 &14 &15 &16 &17 &18 &19 &20\\\hline0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 \\\hline
+1 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &18 &18 &18 &18 &18 &18 &18 &18 &18 &18 &18 \\\hline
+2 &0 &0 &0 &0 &4 &4 &4 &4 &4 &4 &18 &18 &18 &18 &22 &22 &22 &22 &22 &22 &22 \\\hline
+3 &0 &0 &0 &0 &4 &4 &4 &4 &4 &4 &18 &18 &18 &18 &22 &22 &22 &22 &22 &22 &22 \\\hline
+4 &0 &0 &0 &0 &4 &4 &4 &4 &4 &4 &18 &18 &18 &18 &22 &22 &22 &22 &22 &22 &22 \\\hline
+5 &0 &0 &0 &0 &4 &10 &10 &10 &10 &14 &18 &18 &18 &18 &22 &28 &28 &28 &28 &32 &32 \\\hline
+
+\end{tabular}
+
+
+\vfill
+
+\begin{tabular}{cc}
+\\
+\multicolumn{2}{c}{Item}\\
+Wt & Val\\\hline
+14 & 11 \\\hline
+13 &7 \\\hline
+14 & 17 \\\hline
+10 & 16 \\\hline
+7 & 6 \\\hline
+\end{tabular}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\multicolumn{22}{c}{Knapsack Capacity}\\\hline
+   &0 &1 &2 &3 &4 &5 &6 &7 &8 &9 &10 &11 &12 &13 &14 &15 &16 &17 &18 &19 &20\\\hline0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 \\\hline
+1 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &11 &11 &11 &11 &11 &11 &11 \\\hline
+2 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &7 &11 &11 &11 &11 &11 &11 &11 \\\hline
+3 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &7 &17 &17 &17 &17 &17 &17 &17 \\\hline
+4 &0 &0 &0 &0 &0 &0 &0 &0 &0 &0 &16 &16 &16 &16 &17 &17 &17 &17 &17 &17 &17 \\\hline
+5 &0 &0 &0 &0 &0 &0 &0 &6 &6 &6 &16 &16 &16 &16 &17 &17 &17 &22 &22 &22 &22 \\\hline
+
+\end{tabular}
+\end{document}
