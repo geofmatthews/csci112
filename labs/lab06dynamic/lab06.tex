@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    escapechar=|,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\showfig}[2]{
+\noindent\includegraphics[width=\textwidth]{#1}
+\centerline{#1}
+}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
+
+\title{Dynamic Programming}
+\author{CSCI 112, Lab 6}
+\date{}
+
+\begin{document}
+\sloppy
+
+\maketitle
+
+\begin{description} 
+\item[File names:]  Names of files, functions, and variables, 
+when specified,
+must be EXACTLY as specified.  This includes simple mistakes such
+as capitalization.
+
+\item[Individual work:]  All work must be your own.  Do not share
+code with anyone other than the instructor and teaching assistants.
+This includes looking over shoulders at screens with the code open.
+You may discuss ideas, algorithms, approaches, {\em etc.} with
+other students but NEVER actual code.  Do not use code
+written by anyone else, in the class or from the internet.
+
+\item[Documentation:] Each file should begin with a docstring
+that includes your name, the class number and name, the lab
+number, and  
+a short description of the lab, as well as documentation pertinent
+to that particular file.
+
+\item[Substring:] One string is a {\em substring} of another
+if the characters in the first string occur, in order, somewhere in
+the second string.  For example, the string ``geoff'' is a substring
+of the string ``xxgxxeoxxfxxxf''.  We will write a boolean
+function that returns {\tt True} or {\tt False} depending on
+whether the first argument is a substring of the second.
+
+\item[Recursive solution:] Code up a recursive solution to
+this problem using the following strategy:
+\begin{itemize}
+\item If the first string is empty then return {\tt True}
+\item If the second string is empty then return {\tt False}
+\item If the first letter of the first string does {\bf not}
+match the first letter of the second string, then
+recursively try to match the first string with the
+second string without its first letter.
+\item If the first letter of the first string {\bf does}
+match the first letter of the second string,
+then check recursion both with and without
+matching the first letters.  If either one succeeds,
+then the case succeeds.
+\end{itemize}
+
+\item[Dynamic programming:] Code up a non-recursive
+solution to this problem by building up an $m\times n$ table of results
+matching each letter of the potential substring with the superstring.
+For example, trying to determine whether ``abc'' is  a substring
+of ``xabbxc'' we get the following table, where 1 is {\tt True} 
+and 0 is {\tt False}:
+
+\begin{tabular}{cccccccc}
+  &    & c & a & b& b & x & c \\\hline
+  & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+a & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+b & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+c & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{tabular}
+
+Each cell in the table represents whether the string at the left
+(up to the current row) is a substring of the string at the top
+(up to the current column).  This can be determined from
+the two current characters in the strings, and the entries
+in the table above and to the left of the current entry, so
+the table can be filled in with a dynamic programming 
+algorithm.
+
+\item[Turn in:]  Two procedures: \verb|is_substring_recursive|
+and \verb|is_substring_dynamic|, defined in a file called \verb|substring.py|.
+Also a unittest module called \verb|substring_test.py|
+with randomly generated test strings.  Put all in a folder
+called \verb|csci112lab06yourname|, zip and turn into canvas.
+
+\end{description}
+
+
+\end{document}
