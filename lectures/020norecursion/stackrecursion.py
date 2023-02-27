@@ -189,10 +189,12 @@ def evens(n):
             returnval = returnval
     return returnval
 
-# Some locations are irrelevant because we have tail recursion:
+
 def odds(n):
     return not(evens(n))
         
+# Some locations are irrelevant because we have tail recursion:
+
 def evens2(n):
     s = stack()
     push(s, ['even', [n]])
