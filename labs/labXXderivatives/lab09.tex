@@ -75,7 +75,17 @@ to that particular file.
 
 \item[The project:]  Write a function that takes a parse tree for a mathematical expression and calculates the derivative of the expression with respect to some variable.
 
-????????????????????
+\item[Symbolic derivatives:] In calculus class we learned several
+rules for derivatives.  For example, where $A$ and $B$ are arbitrary
+expressions involving $x$, and $c$ is an arbitrary constant:
+\begin{align*}
+\frac{d}{dx} c &= 0\\
+\frac{d}{dx} cx &= c\\
+\frac{d}{dx} \left(a^n\right) &= \left(\frac{d}{dx} a\right)na^{n-1} \\
+\frac{d}{dx} \left(a + b\right) &= \frac{d}{dx} a + \frac{d}{dx} b\\
+\frac{d}{dx} \left(ab\right) &= (b)\frac{d}{dx}(a) + (a) \frac{d}{dx} (b)
+\end{align*}
+
 
 
 \item[File names:]  Call your module \lstinline{derivative.py}, your unit test

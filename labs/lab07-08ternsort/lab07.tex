@@ -120,9 +120,9 @@ You can do this with three indices into the array: \lstinline{left}, \lstinline{
 which start at \lstinline{low+1} and \lstinline{hi-1}, and \lstinline{i} which starts
 out at the same place as \lstinline{left}, and moves gradually to the right.
 
-When \lstinline{i >= right} the list will be partitioned.  At each step,
-you need to compare \lstinline{a[i]} with both \lstinline{a[left]}
-and \lstinline{a[right]}.  Depending on the three possible outcomes
+When \lstinline{i > right} the list will be partitioned.  At each step,
+you need to compare \lstinline{a[i]} with both \lstinline{a[low]}
+and \lstinline{a[hi]}.  Depending on the three possible outcomes
 of these comparisons, you need to move one or more of
 \lstinline{right}, \lstinline{left}, and \lstinline{i}.
 
