@@ -1,5 +1,50 @@
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
+\usepackage{fancyvrb}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage[listings]{tcolorbox}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    language=Python,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    escapechar=|,
+    frame=single
+}
+
+\lstset{style=mystyle}
+
+\newcommand{\showfig}[2]{
+\noindent\includegraphics[width=\textwidth]{#1}
+\centerline{#1}
+}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\li}{\item}
+\newcommand{\ei}{\end{itemize}}
+
 \usepackage{graphicx}
 \usepackage{hyperref,fancyvrb,amsmath}
 \usepackage{tikz}
@@ -9,14 +54,14 @@
 
 \newcommand{\set}[1]{\ensuremath{\{#1\}}}
 
-\title{CSCI 241, Project \#3, Random Maze Generation}
-\author{Geoffrey Matthews}
+\title{Random Maze Generation}
+\author{CSCI112, Lab 9}
 
 \begin{document}
 
 \maketitle
 
-\centerline{\bf Note:  This is still incomplete.}
+
 
 
 \centerline{\includegraphics[scale=0.5]{maze.png}}
@@ -25,30 +70,24 @@
 
 \begin{description}
 
-\item[Due date:] Midnight, May 26.
+\item[File names:]  Names of files, functions, and variables, 
+when specified,
+must be EXACTLY as specified.  This includes simple mistakes such
+as capitalization.
 
-\item[Turn in:] Be sure to {\bf zip} all your source files together
-  before submission.  Canvas downloads mangle the names, and java
-  likes to have the names of the files the same as the public class in
-  the file.
+\item[Individual work:]  All work must be your own.  Do not share
+code with anyone other than the instructor and teaching assistants.
+This includes looking over shoulders at screens with the code open.
+You may discuss ideas, algorithms, approaches, {\em etc.} with
+other students but NEVER actual code.  Do not use code
+written by anyone else, in the class or from the internet.
 
-  To make
-  it easier for me to write scripts to unpack, compile, and run your
-  file:
-  \begin{itemize}
-    \item
-      Use {\bf zip}, not tar or 7z or any other archiving software.
-      \item Zip the folder, not the individual  files in the folder.
-      \item Name the zip file {\tt lab03.zip}.
-\item
-  Nmae the file (and class) with your {\tt main} method in it {\tt
-    lab03.java}. 
-  \end{itemize}
+\item[Documentation:] Each file should begin with a docstring
+that includes your name, the class number and name, the lab
+number, and  
+a short description of the lab, as well as documentation pertinent
+to that particular file.
 
-\item[Input and output:]  The number of rows and the number of
-  columns as arguments.  The output will be a graphical image of the
-  maze (see the java example from the previous lab to see how to make
-  images). 
   
 \item[Maze algorithm:] To draw a maze, consider a rectangular grid
   with each cell labelled and walls between all adjacent cells. as in
