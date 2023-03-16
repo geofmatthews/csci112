@@ -60,13 +60,7 @@
 \begin{document}
 
 \maketitle
-
-
-
-
-\centerline{\includegraphics[scale=0.5]{maze.png}}
-
-
+\centerline{\includegraphics[scale=1]{Figure_1}}
 
 \begin{description}
 
@@ -139,7 +133,7 @@ would have cycles in it.
   following approach.
 
   Before we begin, we form a complete list of all adjacent cell pairs.
-  Each cell in the range (0\ldots n-2) is paired up with the cells to
+  Each cell in the grid is paired up with the cells to
   the right and below it, if they exist.  For example, for the cells
   in Figure \ref{mazefig}, the list would start out looking like this:
   \[
@@ -150,17 +144,17 @@ would have cycles in it.
   one adjacent cell, and the last cell has no adjacent cell.
 
   Now we randomize this list.  The algorithm is simple:  for each
-  pair of cells, swap that pair with a pair at a random location.
+  pair of cells, swap that pair with a pair at a random location.  Or
+  you can use the {\tt random.shuffle} routine.
 
   We use this list every time we want a new pair of random cells.  We
   remove the first pair and check to see if the two cells are in
   different partitions.  If they are in different partitions, we put a
-  door there and merge the partitions.  We put this pair in another
-  list ({\em e.g.}, {\tt doors}).  If we don't put a door there (they were
-  in the same partition), we keep them in a different list ({\em
-    e.g.}, {\tt walls}).
+  door there and merge the partitions.  We also eliminate
+  this pair from our list of walls.  If we don't put a door there (they were
+  in the same partition), we keep them in the {\tt walls} list.
 
-  We can now use the list of {\tt walls} to tell us where all the
+  We can now use the resulting list of remaining {\tt walls} to tell us where all the
   internal walls are drawn in the final maze.  Having this list makes
   it easy to draw the final maze: draw the outside border (leaving the
   entrance and exit open), and then draw a wall segment between each
@@ -180,28 +174,21 @@ If we do this inefficiently, every time we have two cells, $i$ and
 $j$, and want to know if they are in the same set, we may have to use
 an $O(n)$ process to find this out.  We can do a lot better than that.
 
-  To accomplish this, wére going to use a forest of trees to represent
-  the partition.  We are going to have to insert and delete trees from
-  this forest, so pick an efficient data structure for that, but the
-  order is not going to matter.
-
-  We are also going to have to quickly find a node in the tree, given
-  just its index, so keep an array $(0,\ldots,n-1)$ of pointers to the
-  individual nodes in the forest as well.
-
 For these trees we are only going to use {\em parent} pointers, and
-they will be general trees, not binary trees.  (The data structure
-looks a lot like a linked list, but we're going to use it as if it
-were a tree.)
+they will be general trees, not binary trees.  Rather than create a 
+data structure for the cells with a parent pointer, we'll use a 
+dictionary of parents, with the keys being the cells.
 
-  Each cell starts out in its own tree, as in Figure \ref{mergesets}
-  (a).  In order to merge cells 4 and 9, we simply make the root of
-  one the parent of the root of the other; for example as in Figure
-  \ref{mergesets} (b), where we made 9 the parent of 4.  In (c) we
-  join 3 and 4 by merging \set{3} with \set{4,9}, by making 9 the
-  parent of 3 (since 9 is the root of \set{4,9}).  The next few merges
-  are shown in Figure \ref{mergesets} (d) to (h).  (Which cells were
-  merged at each step?)
+Each cell starts out in its own tree, as in Figure \ref{mergesets}
+(a).   Thus, each cell has {\tt None} as its parent.
+   
+In order to merge cells 4 and 9, we simply make the root of
+one the parent of the root of the other; for example as in Figure
+\ref{mergesets} (b), where we made 9 the parent of 4.  In (c) we
+join 3 and 4 by merging \set{3} with \set{4,9}, by making 9 the
+parent of 3 (since 9 is the root of \set{4,9}).  The next few merges
+are shown in Figure \ref{mergesets} (d) to (h).  (Which cells were
+merged at each step?)
 
 Clearly, given two cells, merging their sets is a fast operation.  We
 merely find their roots, and then make the root of one be the parent
@@ -538,12 +525,9 @@ maze in (f).}
   \Tree [.24 ] \\
     };
   \end{tikzpicture}
-
-
-
-      \hrulefill
+  
+ \hrulefill
       
-
 (h)  \begin{tikzpicture}
     \matrix {
   \Tree [.0 ] &
@@ -573,5 +557,81 @@ maze in (f).}
     each stage? }
   \label{mergesets}
   \end{figure}
+  
+ \begin{description}
+ \item[Implementation:]
+  
+  We can implement these ideas with just two major data structures:
+  {\tt walls} and {\tt parents}.  
+  
+  \begin{description}
+  \item[{\tt parents}] is a dictionary with each cell in the maze being
+  a key, and the value is either {\tt None} or another
+  cell in the maze.  This is initialized to all {\tt None},
+  indicating that each cell is alone in its own class.
+  
+  \item[{\tt walls}] is a list of {\em pairs} of cells, indicating that there is a wall
+  between the two cells.  To begin with, there is a wall between
+  every adjacent pair of cells in the maze.  
+  
+  Since we only need to represent
+  a wall once, we don't need to store both the north and south walls,
+  for example, or both the east and west walls.  We arbitrarily 
+  decide that each cell will hold only the south and east neighbors
+  (as in the algorithm discussion, above).
+  
+  Make sure that the cells along the edges do not have
+  neighbors that are off the board!
+  
+ \end{description}
+ 
+ With these data structures it is easy to implement the functions
+ we need.
+ \begin{itemize}
+ \item {\tt root}: find the root of a cell from the {\tt parents}
+ \item {\tt join}: join the two sets of cells in different sets into one set
+ \item  {\tt eraseWalls:} loop through the list of walls and eliminate
+ them one by one as we unify cells, in line with the above algorithm
+ \item {\tt drawMaze} one simple way to draw a set of lines is with
+ {\tt matplotlib}.  Import the plotting object with
+ \begin{lstlisting}
+import matplotlib.pyplot as plt
+\end{lstlisting}
+Here is my code:
+\begin{lstlisting}
+def drawMaze(walls, mazeSize):
+    nrows, ncols = mazeSize
+    fig,ax = plt.subplots()
+    ax.axis('off')
+    plt.plot((0,ncols,ncols),
+             (nrows,nrows,1),
+             linestyle='-',color='black')
+    plt.plot((ncols,0,0),
+             (0,0,nrows-1),
+             linestyle='-',color='black')
+    for wall in walls:
+        i,j = wall
+        y1,x1 = position(i,mazeSize)
+        y2,x2 = position(j,mazeSize)
+        if x1 == x2:
+            plt.plot((x1, x1+1), (y1,y1), linestyle='-',color='black')
+        else:
+            plt.plot((x1,x1), (y1,y1+1), linestyle='-',color='black')    
+    plt.show()
+\end{lstlisting}
+In my implementation I represented cells as single integers, as in
+the notes above, hence I needed to translate an integer into
+a two dimensional position with the {\tt position} function.
+If you represent cells as pairs, you may not need this step.
+\end{itemize}
 
+\item[Analysis:]  Note that the whole algorithm is $O(n\log n)$,
+where $n$ is the number of cells.  There are about $2n$ walls,
+and for each wall we check whether the endpoints are in
+the same class with about $\log n$ steps, thanks to the forest of trees.
+If we have to join two sets, it is a $O(1)$ process, again thanks
+to the forest of trees.
+Without this optimization, it is very easy for these kinds of
+algorithms to become $O(n^2)$ or worse.
+\end{description}
 \end{document}
