@@ -106,6 +106,9 @@ to search for a solution to the maze.  When each node is
 placed on the ``gray'' stack, you can record its predecessor
 in another dictionary.  The start node has predecessor {\tt None}.
 
+When the end node has a predecessor, you can stop
+the search!
+
 \item[Random seed:] If you want to draw the same maze
 every time, set the random seed to the same value before
 shuffling the edges:  {\tt random.seed(1234)}, for example. 

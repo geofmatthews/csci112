@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.30)  21 MAR 2023 14:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.30)  21 MAR 2023 14:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./lab10.tex
-(lab10.tex
+**./lab11.tex
+(lab11.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2022-12-17>
 (C:\Users\thatm\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -813,8 +813,8 @@ tex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count335
 \l__pdf_internal_box=\box121
-) (lab10.aux)
-\openout1 = `lab10.aux'.
+) (lab11.aux)
+\openout1 = `lab11.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
 LaTeX Font Info:    ... okay on input line 60.
@@ -870,9 +870,9 @@ LaTeX Font Info:    ... okay on input line 60.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 60.
-(lab10.out) (lab10.out)
+(lab11.out) (lab11.out)
 \@outlinefile=\write5
-\openout5 = `lab10.out'.
+\openout5 = `lab11.out'.
 
 
 (C:\Users\thatm\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
@@ -921,31 +921,30 @@ Package pdftex.def Info: Figure_1.png  used on input line 63.
 [1
 
 {C:/Users/thatm/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./Figure_1.p
-ng>] [2] (lab10.aux)
-Package rerunfilecheck Info: File `lab10.out' has not changed.
+ng>] [2] (lab11.aux)
+Package rerunfilecheck Info: File `lab11.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25066 strings out of 476406
- 480313 string characters out of 2789566
- 2218787 words of memory out of 3000000
- 44985 multiletter control sequences out of 15000+600000
- 519920 words of font info for 63 fonts, out of 8000000 for 9000
+ 24606 strings out of 476406
+ 476316 string characters out of 2789566
+ 1856787 words of memory out of 3000000
+ 44560 multiletter control sequences out of 15000+600000
+ 519584 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,6n,104p,420b,1349s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 99i,6n,104p,420b,516s stack positions out of 10000i,1000n,20000p,200000b,80000s
 <C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
 cmbx10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmmi10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr10.pfb><C:/Users/thatm/AppData/Local/Programs/MiKTeX/fonts
 /type1/public/amsfonts/cm/cmr12.pfb><C:/Users/thatm/AppData/Local/Programs/MiKT
 eX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/thatm/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/thatm/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/thatm/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/
-thatm/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on lab10.pdf (2 pages, 148656 bytes).
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/thatm/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/thatm/App
+Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on lab11.pdf (2 pages, 125807 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 36 named destinations out of 1000 (max. 500000)
+ 61 PDF objects out of 1000 (max. 8388607)
+ 3 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
