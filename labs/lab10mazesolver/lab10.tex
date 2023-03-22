@@ -109,6 +109,11 @@ in another dictionary.  The start node has predecessor {\tt None}.
 When the end node has a predecessor, you can stop
 the search!
 
+Do not use recursion.  Use a stack for depth-first search
+so that depth-first, breadth-first, and next week's ``best-first''
+searches all look the same, except for the order of
+the gray nodes in the data structure.
+
 \item[Random seed:] If you want to draw the same maze
 every time, set the random seed to the same value before
 shuffling the edges:  {\tt random.seed(1234)}, for example. 
