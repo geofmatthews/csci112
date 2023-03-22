@@ -102,6 +102,10 @@ more likely to be on the solution path than nodes that are {\em farther}.
 We will accordingly use a min queue for the cells on the gray
 list, and use the cell closest to the goal each time.
 
+Technically this algorithm is called ``greedy,'' in that it tries
+to make the biggest improvement possible with each step.
+It takes nothing into account except getting closer to its goal!
+
 \item[Timing:]  Run some experiments to see how much you've
 speeded up the search.  In lieu of actual timing, you can 
 compare the number of nodes added to the gray list before
