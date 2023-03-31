@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  31 MAR 2023 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.9.9)  31 MAR 2023 14:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1061,10 +1061,10 @@ ublic/amsfonts/cm/cmssi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmsy7.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 >
-Output written on quine.pdf (28 pages, 169826 bytes).
+Output written on quine.pdf (28 pages, 171346 bytes).
 PDF statistics:
- 891 PDF objects out of 1000 (max. 8388607)
- 816 compressed objects within 9 object streams
+ 892 PDF objects out of 1000 (max. 8388607)
+ 817 compressed objects within 9 object streams
  69 named destinations out of 1000 (max. 500000)
  199 words of extra memory for PDF output out of 10000 (max. 10000000)
 
