@@ -1,0 +1,16 @@
+#lang racket
+(define data "fubar")
+(define (print-data-as-data data)
+  (display "#lang racket")
+  (newline)
+  (display "(define data ")
+  (print data)
+  (display ")"))
+(define (print-data-as-code data)
+  (newline)
+  (display data))
+(print-data-as-data data)
+(print-data-as-code data)
+(newline)
+(print (+ 2 2))
+

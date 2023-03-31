@@ -1,0 +1,36 @@
+\frametitle{{\em All} problems about computer programs are unsolvable!} 
+
+\begin{itemize}
+\item Suppose  program {\em P} can
+  analyze any program to determine if it prints ``hello''.  Program {\em P}
+  always halts.
+
+\item Now we build a program {\em Q}, which uses {\em P} as a module.
+\begin{itemize}
+
+\item Program {\em Q} first obtains a copy of itself, $Q'$.
+
+\item Program {\em Q} now runs {\em P} on $Q'$.
+
+\item If {\em P} says that the copy prints ``hello'', then print ``goodbye''.
+\item Else print ``hello''.
+\end{itemize}
+
+\item  What does {\em P} say about {\em Q}?
+\begin{itemize}
+
+\item If {\em P} says {\em Q} prints ``hello'', then {\em Q} prints ``goodbye''.
+
+\item If {\em P} says {\em Q} does not print ``hello'', then {\em Q} prints ``hello''.
+\end{itemize}
+\end{itemize}
+
+\vfill
+
+{\bf\large No computer program can determine anything interesting about computer programs!}
+
+\hfill {\sl\large ---Rice's Theorem, 1951}
+
+
+\vfill
+

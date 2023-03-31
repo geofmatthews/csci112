@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{The Halting Problem}{2}{0}{1}
+\beamer@sectionintoc {2}{Paradoxical sentences}{5}{0}{2}
+\beamer@sectionintoc {3}{Sentences can talk about other sentences}{9}{0}{3}
+\beamer@sectionintoc {4}{The Quine sentence}{10}{0}{4}
+\beamer@sectionintoc {5}{The Quine sentence}{14}{0}{5}
+\beamer@sectionintoc {6}{Programs can analyze or even run other programs}{16}{0}{6}
+\beamer@sectionintoc {7}{Programs analyzing themselves}{17}{0}{7}
+\beamer@sectionintoc {8}{Python Quines}{18}{0}{8}
+\beamer@sectionintoc {9}{Scheme Quines}{19}{0}{9}
+\beamer@sectionintoc {10}{Quines}{20}{0}{10}
+\beamer@sectionintoc {11}{The Halting Problem Again}{21}{0}{11}
+\beamer@sectionintoc {12}{{\em All} problems about computer programs are unsolvable!}{28}{0}{12}

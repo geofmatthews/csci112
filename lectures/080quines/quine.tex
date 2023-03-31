@@ -1,0 +1,318 @@
+
+\documentclass[slidestop,xcolor=pst]{beamer}
+\usepackage{fancyvrb}
+
+
+\newcommand{\sect}[1]{
+\section{#1}
+\begin{frame}[fragile]\frametitle{#1}
+}
+
+\mode<presentation>
+{
+  \usetheme{Madrid}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage[english]{babel}
+
+\usepackage[latin1]{inputenc}
+
+\title[CSCI 112: Quines and the Halting Problem]
+{
+CSCI 112:  Quines and the Halting Problem
+}
+
+\subtitle{} % (optional)
+
+\author[Geoffrey Matthews]
+{Geoffrey Matthews}
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+%\begin{frame}
+%  \frametitle{Outline}
+%  \tableofcontents
+%  % You might wish to add the option [pausesections]
+%\end{frame}
+
+
+\sect{The Halting Problem}
+\begin{itemize}
+\item Write a program that checks other programs for infinite loops.
+\item For example, with the input:
+\begin{Verbatim}[frame=single]
+  while (True):
+      continue
+\end{Verbatim}
+your program will output: \fbox{\tt Infinite loop!}
+\item But with the input:
+\begin{Verbatim}[frame=single]
+  print(2+2)
+\end{Verbatim}
+your program will output: \fbox{\tt Halts!}
+\pause
+\item Your program must halt in every case, and so you can't just run
+  the program in a simulator and check.  You might wait forever.
+\pause
+\item Is there another way it could be done?
+\end{itemize}
+
+\end{frame}
+
+\sect{Paradoxical sentences}
+\centerline{\bf This sentence is false.}
+
+\vfill
+\pause
+
+\begin{itemize}
+\item If it's true, then it's false.
+\pause
+\item If it's false, then it's true.
+\pause
+\item Is self-reference the problem?
+\end{itemize}
+\vfill
+
+\end{frame}
+
+\sect{Sentences can talk about other sentences}
+\vfill
+\begin{itemize}
+\item {\bf ``I love you!''} is what I want to hear.
+\item {\bf ``Cats can fly.''} is false.
+\item {\bf ``my mother hates the''} is a sentence fragment.
+\item  Appending {\bf``Cats cannot''} and {\bf``fly''} yields a truth.
+\end{itemize}
+\vfill
+
+\end{frame}
+
+\sect{The Quine sentence}
+
+\centerline{ \parbox{3in}{{\bf ``yields falsehood when appended to its own quotation''}
+  yields falsehood when appended to its own quotation.}}
+\vfill
+\pause
+\begin{itemize}
+\item This sentence manages to talk about itself without using
+  self-reference. 
+\item It only refers to the quoted sentence fragment, not itself.
+\item The sentence says something about what happens when you do
+  something to the sentence fragment.
+\item When you do what the sentence says, you get the sentence itself.
+\pause
+\item Is this sentence true or false?
+\pause
+\begin{itemize}
+\item If it's true, then it's false.
+\item If it's false, then it's true.
+\end{itemize}
+\end{itemize}
+\vfill
+\end{frame}
+
+
+\sect{The Quine sentence}
+
+\centerline{ \parbox{3in}{{\bf ``yields falsehood when appended to its own quotation''}
+  yields falsehood when appended to its own quotation.}}
+\vfill
+
+\begin{itemize}
+\item The beauty of the Quine sentence is that it contains a {\em
+  recipe}, or a {\em set of instructions}, that, when carried out,
+  result in a paradoxical situation.
+\pause
+\item Computers can also talk about what happens when you carry out
+  instructions! 
+\end{itemize}
+
+\end{frame}
+\sect{Programs can analyze or even run other programs}
+
+\begin{itemize}
+\item A syntax checker for {\em Python} can be written in {\em Python}.
+\begin{itemize}
+\item This program could check its own syntax!
+\end{itemize}
+\item An interpreter for {\em Python} can be written in {\em Python}.
+\begin{itemize}
+\item This program could interpret itself!
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\sect{Programs analyzing themselves}
+\begin{itemize}
+\item But when we run a program on itself, we assume that, while the
+  program is running, there is another copy of the program stored
+  somewhere.
+\item Even this is not necessary!  We can use Quine's trick!
+\item Any program can be modified so that, before it does it's usual
+  job, it prints a copy of its own source code.
+\item Such a program is called a {\em Quine}.
+\end{itemize}
+\end{frame}
+
+\sect{Python Quines}
+\begin{itemize}
+\item Consider first this program.  Its output is below.
+\end{itemize}
+
+
+\scriptsize
+\begin{Verbatim}[frame=single]
+#data = """Some random
+text of whatever form.
+Bla bla bla."""
+def printDataAsData(data):
+    print('data = ""' + '"' + data + '""' + '"')
+def printDataAsProgram(data):
+    print(data)
+printDataAsData(data)
+printDataAsProgram(data)
+print(2+2)
+\end{Verbatim}
+
+\scriptsize
+\begin{Verbatim}[frame=single]
+data = """Some random
+text of whatever form.
+Bla bla bla."""
+Some random
+text of whatever form.
+Bla bla bla.
+4
+\end{Verbatim}
+
+\end{frame}
+
+\sect{Scheme Quines}
+\begin{itemize}
+\item Clearly we could replace the text string with
+anything---even the remaining text of the program.
+\end{itemize}
+
+{
+\scriptsize
+\begin{Verbatim}[frame=single]
+data = """def printDataAsData(data):
+    print('data = ""' + '"' + data + '""' + '"')
+def printDataAsProgram(data):
+    print(data)
+printDataAsData(data)
+printDataAsProgram(data)
+print(2+2)"""
+def printDataAsData(data):
+    print('data = ""' + '"' + data + '""' + '"')
+def printDataAsProgram(data):
+    print(data)
+printDataAsData(data)
+printDataAsProgram(data)
+print(2+2)
+\end{Verbatim}
+}
+\begin{itemize}
+\item Why didn't I show you the output of this program?
+\end{itemize}
+
+\end{frame}
+
+\sect{Quines}
+\begin{itemize}
+\item  Clearly adding two and two could be replaced with {\em any}
+  program.
+\item It is thus easy to see that {\em any} program could be modified
+  to print its own source code before doing anything else.
+\item Thus, any program that analyzes other programs, {\em can 
+  also analyze itself!}
+\item We can use this trick to make some paradoxical looking programs. 
+\end{itemize}
+\end{frame}
+
+\sect{The Halting Problem Again}
+\begin{itemize}
+\item Suppose the halting problem is solvable, and program {\em P} can
+  analyze any program to determine if it halts.  Program {\em P}
+  always halts.
+\pause
+\item Now we build a program {\em Q}, which uses {\em P} as a module.
+\begin{itemize}
+\pause
+\item Program {\em Q} first obtains a copy of itself, $Q'$.
+\pause
+\item Program {\em Q} now runs {\em P} on $Q'$.
+\pause
+\item If {\em P} says that the copy runs forever, then halt.
+\item Else loop forever.
+\end{itemize}
+\pause
+\item  What does {\em P} say about {\em Q}?
+\begin{itemize}
+
+\item If {\em P} says {\em Q} halts, then {\em Q} runs forever.
+
+\item If {\em P} says {\em Q} runs forever, then {\em Q} halts.
+\end{itemize}
+\end{itemize}
+\pause
+
+\vfill
+
+\centerline{\bf\large The halting problem is not solvable!}
+
+\vfill
+
+\end{frame}
+
+\sect{{\em All} problems about computer programs are unsolvable!}
+
+\begin{itemize}
+\item Suppose  program {\em P} can
+  analyze any program to determine if it prints ``hello''.  Program {\em P}
+  always halts.
+  
+\item Now we build a program {\em Q}, which uses {\em P} as a module.
+\begin{itemize}
+
+\item Program {\em Q} first obtains a copy of itself, $Q'$.
+
+\item Program {\em Q} now runs {\em P} on $Q'$.
+
+\item If {\em P} says that the copy prints ``hello'', then print ``goodbye''.
+\item Else print ``hello''.
+\end{itemize}
+
+\item  What does {\em P} say about {\em Q}?
+\begin{itemize}
+
+\item If {\em P} says {\em Q} prints ``hello'', then {\em Q} prints ``goodbye''.
+
+\item If {\em P} says {\em Q} does not print ``hello'', then {\em Q} prints ``hello''.
+\end{itemize}
+\end{itemize}
+
+\vfill
+
+{\bf\large No computer program can determine anything interesting about 
+computer programs!}
+
+\hfill {\sl\large ---Rice's Theorem, 1951}
+
+
+\vfill
+
+\end{frame}
+\end{document}
+\end
